@@ -1,11 +1,11 @@
-# Phase 5: Searching for Blogs and Posts
+# Phase 5: Ratings system
 
 ## Rails
 ### Models
+* rating
 
 ### Controllers
-Api::BlogsController (search)
-Api::PostsController (search)
+* ratings_controller (may just create ratings through users)
 
 ### Views
 
@@ -15,8 +15,7 @@ Api::PostsController (search)
 ### Collections
 
 ### Views
-* BlogSearchItem
-* SearchShow (composite view, contains BlogsIndex and PostsIndex subviews)
+* ratings/form
 
 ## Gems/Libraries
 

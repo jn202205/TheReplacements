@@ -1,29 +1,43 @@
-# Phase 2: Viewing Blogs and Posts
+# Phase 2: Api and backbone views
 
 ## Rails
 ### Models
+* sport
+* position
 
 ### Controllers
-Api::BlogsController (create, destroy, index, show)
-Api::PostsController (create, destroy, show, update)
+* Api::SportsController(:index, :show)
+* Api::PositionsController
 
 ### Views
-* blogs/show.json.jbuilder
+* users/show.json.jbuilder
 
 ## Backbone
 ### Models
-* Blog (parses nested `posts` association)
-* Post
+* Player (parses nested 'sports' association)
+  * players are users
+* Sport (parses nested 'positions' assoction)
+* Position
 
 ### Collections
-* Blogs
-* Posts
+* Players
+* Sports
+* Positions
 
 ### Views
-* BlogForm
-* BlogShow (composite view, contains PostsIndex subview)
-* PostsIndex (composite view, contains PostsIndexItem subviews)
-* PostsIndexItem
-* PostShow
+* layout/dashboard.js (main page that wil hold many subvies)
+  * Subviews
+    1. layout/welcomeView
+    2. layout/quickStart
+    3. sports/sideBarView
+    4. sports/popularIndex
+    5. sports/indexItemView
+    6. players/index
+    7. players/indexItem
+
+* players/profile
+  * Subviews
+    * postions/playerPositions
+    * positions/show
 
 ## Gems/Libraries

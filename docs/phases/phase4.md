@@ -1,13 +1,12 @@
-# Phase 4: User Feeds
+# Phase 4: Choosing players (Creating pairings)
 
 ## Rails
 ### Models
+* pairings (could have better name)
 
 ### Controllers
-Api::PostsController (feed)
 
 ### Views
-posts/feed.json.jbuilder
 
 ## Backbone
 ### Models
@@ -15,6 +14,8 @@ posts/feed.json.jbuilder
 ### Collections
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
+* players/schedule (reuse sideview on dashboard)
+  * Subviews
+    1 players/gamesIndex
 
 ## Gems/Libraries

@@ -1,26 +1,23 @@
 # View Wireframes
 
-## New Session
-![new-session]
+## Sign up / Log in
+![signup-login]
 
-## Feed Show (landing page)
-![feed-show]
+## Dashboard (landing page)
+![dashboard]
 
-## Blog Show
-![blog-show]
+## Player Search (New Game Form)
+![new-game]
 
-## Post Show
-![post-show]
+## Player search results
+![player-results]
 
-## Post Form
-![post-form]
+## Player profile
+![player-profile]
 
-## Search Results
-![search-results]
+[signup-login]: ./wireframes/signup-login.png
+[dashboard]: ./wireframes/dashboard.png
+[new-game]: ./wireframes/new-game.png
+[player-results]: ./wireframes/player-results.png
+[player-profile]: ./wireframes/player-profile.png
 
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
