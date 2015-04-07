@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: TheReplacements_development
+  database: wreckyourleague_dev
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: TheReplacements_test
+  database: wreckyourleague_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: TheReplacements_production
-  username: TheReplacements
+  database: WreckYourLeague_production
+  username: WreckYourLeague
   password: <%= ENV['THEREPLACEMENTS_DATABASE_PASSWORD'] %>

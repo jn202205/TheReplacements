@@ -1,11 +1,13 @@
-# The Replacements
+# [WreckYourLeague.com][wreckyourleague]
 
 [Heroku link][heroku]
 
-[heroku]: https://thereplacements.herokuapp.com/
+[wreckyourleague]: http://www.wreckyourleague.com/
+[heroku]: https://wreckyourleague.herokuapp.com/
 
 ## Minimum Viable Product
-The Replacements is Task Rabbit style system for finding players for your recreational sports team. Users can:
+WreckYourLeague is a Task Rabbit style system for finding players for your 
+recreational sports team. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
