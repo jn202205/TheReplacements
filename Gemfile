@@ -14,8 +14,7 @@ gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 
 gem 'newrelic_rpm'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -24,6 +23,7 @@ gem 'newrelic_rpm'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'annotate'
   gem 'byebug'
   gem 'pry-rails'
   gem 'better_errors'
