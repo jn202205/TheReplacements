@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
-
+gem 'font-awesome-rails'
 gem 'newrelic_rpm'
 gem 'bcrypt', '~> 3.1.7'
 
