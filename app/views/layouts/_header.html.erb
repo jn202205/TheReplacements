@@ -1,16 +1,17 @@
-<div class="jumbotron clearfix">
-  <h1>WreckYourLeague <small>It's time to win</small></h1>
-  <!--make into subview -->
-  <div class="btn-group" role="group" aria-label="...">
-    <% if signed_in? %>
-      <a href="#dashboard" class="btn btn-default">Sign Up</a>
-      <a href="#account" class="btn btn-default">How it works</a>
-      <%= link_to 'Sign out', session_path, class: "btn btn-default", method: :delete %>
-    <% else %>
-      <a href="<%= new_user_path %>" class="btn btn-default">Sign Up</a>
-      <a href="#" class="btn btn-default">How it works</a>
-      <a href="<%= new_session_path %>" class="btn btn-default">Login</a>
-    <% end %>
-  </div>
+<div class="btn-group" role="group" aria-label="..."> 
+  <% if signed_in? %>
+    <a href="#dashboard" class="btn btn-default">Sign Up</a>
+    <a href="#account" class="btn btn-default">How it works</a>
+    <%= link_to 'Sign out', session_path, class: "btn btn-default", method: :delete %>
+  <% else %>
+    <a href="<%= new_user_path %>" class="btn btn-default">Sign Up</a>
+    <a href="#" class="btn btn-default">How it works</a>
+    <a href="<%= new_session_path %>" class="btn btn-default">Login</a>
+  <% end %>
 </div>
-
+<div class="jumbotron clearfix">
+  <% unless ['users','sessions'].include?(params[:controller])  %>
+    <h1>WreckYourLeague</h1> 
+  <% end  %>
+</div>
+<h3>It's time to start winning.</h3>

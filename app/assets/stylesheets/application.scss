@@ -16,24 +16,84 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 // header
-.jumbotron {
-  h1 {
-    float: left;
-  }
-  .btn-group {
-    top: 8px;
-    float: right;
-    margin-right: 20px;
-    float: left;
-    a {
-      color: rgb(189, 31, 37);
-      font-weight: 500;
-    }
+.header {
+  padding: 48px 0;
+  margin-bottom: 30px;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+h1 {
+  float: left;
+}
+
+.btn-group {
+  top: 8px;
+  float: right;
+  margin-right: 20px;
+  float: right;
+  a {
+    color: rgb(189, 31, 37);
+    font-weight: 500;
   }
 }
 
 ul {
   list-style-type: none;
+}
+
+.static-homepage {
+  @extend .clearfix;
+  .jumbotron {
+    background-color: transparent;
+    padding-left: 5%;
+  }
+  .header {
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-image: url("http://photos3.meetupstatic.com/photos/theme_body/8/f/a/4/full_2016772.jpeg");
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-bottom: 0;
+    h1, h3 {
+      text-shadow: 2px 2px 5px black;
+    }
+    h3 {
+      padding-left: 5%;
+    }
+  }
+}
+
+.hiw {
+  color: darkgrey;
+  text-align: center;
+  padding: 2% 0;
+  background-color: white;
+  .container {
+    padding: 0 5%;
+    h2 {
+      margin: 1ex;
+      font-weight: 400;
+      strong {
+        font-weight: 500;
+      }
+    }
+    .hiw-item {
+      float: left;
+      max-width: 345px;
+      margin: 0;
+      padding: 0 1em;
+      .fa {
+        font-size: 50px;
+      }
+      .hiw-item-title {
+        font-weight: 500;
+        font-size: 24px;
+      }
+    }
+  }
 }
