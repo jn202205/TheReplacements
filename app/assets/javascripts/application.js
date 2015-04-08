@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-///= require jquery
+//= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require underscore
 //= require backbone
 //= require app
+//= require composite_view
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
