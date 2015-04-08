@@ -1,1 +1,6 @@
-<h1>WreckYourLeague</h1>
+<% unless signed_in? %>
+  <%= link_to 'Sign up', new_user_path %> |
+  <%= link_to 'Log in', new_session_path %>
+<% else %>
+  <%= link_to 'Sign out', session_path, method: :delete %>
+<% end %>
