@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407210426) do
+ActiveRecord::Schema.define(version: 20150408003945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "fname",           limit: 50,                null: false
-    t.string   "lname",           limit: 50,                null: false
-    t.string   "email",                                     null: false
-    t.string   "zipcode",         limit: 5,                 null: false
-    t.string   "password_digest",                           null: false
-    t.string   "session_token",                             null: false
+    t.string   "fname",           limit: 50,                 null: false
+    t.string   "lname",           limit: 50,                 null: false
+    t.string   "email",                                      null: false
+    t.string   "zipcode",         limit: 5,                  null: false
+    t.string   "password_digest",                            null: false
+    t.string   "session_token",                              null: false
     t.integer  "captain_id"
     t.integer  "player_id"
-    t.boolean  "elite",                      default: true, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.boolean  "elite",                      default: false, null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "users", ["captain_id"], name: "index_users_on_captain_id", using: :btree
