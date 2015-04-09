@@ -14,5 +14,5 @@ class Sport < ActiveRecord::Base
   validates :name, presence: true, inclusion: { in: SPORTS }
 
   has_many :player_sports
-  has_many :players, through: :player_sports
+  has_many :players, through: :player_sports, source: :player
 end

@@ -19,6 +19,6 @@
 class User < ActiveRecord::Base
   include UserAuth
 
-  has_many :player_sports
-  has_many :sports, through: :player_sports
+  has_many :player_sports, foreign_key: :player_id 
+  has_many :sports, through: :player_sports, source: :sport
 end
