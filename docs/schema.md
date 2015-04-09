@@ -4,9 +4,7 @@
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-player_id     | integer   | not null, primary key
 name        | string    | not null
-title       | string    | not null
 
 ## positions
 column name | data type | details
@@ -14,7 +12,20 @@ column name | data type | details
 id          | integer   | not null, primary key
 title       | string    | not null
 sport_id    | integer   | not null, foreign key
+
+## player_sports - join table for sports a player can play
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
 player_id   | integer   | not null, foreign key
+sports_id   | integer   | not null, foreign key
+
+## player_positions - track positions that player can play
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+player_id   | integer   | not null, foreign key
+position_id | integer   | not null, foreign key
 
 ## player_ratings
 column name | data type | details
@@ -25,16 +36,16 @@ player_id   | integer   | not null, foreign key (references users)
 comment     | text      |
 rating      | integer   | not null
 
-## pairings
+## matches
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 captain_id  | integer   | not null, foreign key (references users)
 player_id   | integer   | not null, foreign key (references users)
 sport_id    | integer   | not null, foreign key (references sports)
-status      | string    | { approved, pending, rejected }
+status      | string    | not null, { approved, pending, rejected }
 
-## games
+## games (the task)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -42,6 +53,7 @@ user_id     | integer   | not_null, foreign key (references users)
 sport_id    | integer   | not null, foreign key (references sports)
 datetime    | datetime  | not null
 zipcode     | integer   | not null
+info        | text      | not null
 complete    | boolean   | not null, default: false
 
 ## zipcodes (where a player can play, may not be necessary)
