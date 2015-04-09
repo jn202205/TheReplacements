@@ -95,5 +95,25 @@ ul {
         font-size: 24px;
       }
     }
+    .hiw-item :not(.hiw-item-text) {
+      color: #8d2222;
+    }
+  }
+}
+
+.sports {
+  text-align: center;
+  padding: 2% 0;
+  background-color: #EDEFF1;
+  .container {
+    padding: 0 5%;
+    h2 {
+      margin: 1ex;
+      font-weight: 400;
+    }
+    .sports-item {
+      font-weight: 700;
+      font-size: 16px;
+    }
   }
 }
