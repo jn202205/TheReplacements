@@ -13,5 +13,6 @@ class Sport < ActiveRecord::Base
   SPORTS = %w(basketball bowling football soccer softball volleyball)
   validates :name, presence: true, inclusion: { in: SPORTS }
 
-  has_many :positions
+  has_many :player_sports
+  has_many :players, through: :player_sports
 end

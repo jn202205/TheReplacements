@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409174809) do
+ActiveRecord::Schema.define(version: 20150409184320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "player_sports", force: :cascade do |t|
+    t.integer  "player_id",  null: false
+    t.integer  "sport_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "player_sports", ["player_id"], name: "index_player_sports_on_player_id", using: :btree
+  add_index "player_sports", ["sport_id"], name: "index_player_sports_on_sport_id", using: :btree
 
   create_table "positions", force: :cascade do |t|
     t.string   "title",      null: false

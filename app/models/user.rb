@@ -19,5 +19,6 @@
 class User < ActiveRecord::Base
   include UserAuth
 
-  has_many :sports
+  has_many :player_sports
+  has_many :sports, through: :player_sports
 end
