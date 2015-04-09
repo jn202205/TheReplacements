@@ -24,20 +24,23 @@
   margin-bottom: 30px;
   color: inherit;
   box-sizing: border-box;
-}
-
-h1 {
-  float: left;
-}
-
-.btn-group {
-  top: 8px;
-  float: right;
-  margin-right: 20px;
-  float: right;
-  a {
-    color: rgb(189, 31, 37);
+  h1 {
+    float: left;
+  }
+  .btn-group {
+    top: 8px;
+    float: right;
+    margin-right: 20px;
+    float: right;
+  }
+  a.btn.btn-default {
+    color: #bd1f25;
+    border: 1px solid #bd1f25;
     font-weight: 500;
+  }
+  a.btn.btn-default:hover {
+    background-color: #bd1f25;
+    color: white;
   }
 }
 
@@ -66,49 +69,47 @@ ul {
       padding-left: 5%;
     }
   }
-}
-
-.hiw {
-  color: darkgrey;
-  text-align: center;
-  padding: 2% 0;
-  background-color: white;
-  .container {
-    padding: 0 5%;
-    h2 {
-      font-weight: 400;
-      strong {
-        font-weight: 500;
+  .hiw {
+    color: darkgrey;
+    text-align: center;
+    padding: 2% 0;
+    background-color: white;
+    .container {
+      padding: 0 5%;
+      h2 {
+        font-weight: 400;
+        strong {
+          font-weight: 500;
+        }
       }
-    }
-    .hiw-item {
-      .fa {
-        font-size: 50px;
+      .hiw-item {
+        .fa {
+          font-size: 50px;
+        }
+        .hiw-item-title {
+          font-weight: 500;
+          font-size: 24px;
+        }
       }
-      .hiw-item-title {
-        font-weight: 500;
-        font-size: 24px;
+      .hiw-item :not(.hiw-item-text) {
+        color: #8d2222;
       }
-    }
-    .hiw-item :not(.hiw-item-text) {
-      color: #8d2222;
     }
   }
-}
-
-.sports {
-  text-align: center;
-  padding: 2% 0;
-  background-color: #EDEFF1;
-  .container {
-    padding: 0 5%;
-    h2 {
-      margin: 1ex;
-      font-weight: 400;
-    }
-    .sports-item {
-      font-weight: 700;
-      font-size: 16px;
+  .sports {
+    text-align: center;
+    padding: 2% 0;
+    background-color: #EDEFF1;
+    .container {
+      padding: 0 5%;
+      h2 {
+        margin: 1ex;
+        font-weight: 400;
+      }
+      .sports-item {
+        font-weight: 700;
+        font-size: 16px;
+      }
     }
   }
 }

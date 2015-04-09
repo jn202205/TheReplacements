@@ -24,7 +24,7 @@
         </div>
     </div>
   </section>
-  <section class="sports">
+  <section id="sports" class="sports">
     <div class="container">
       <h2>Find players for many sports</h2>
       <div class="row">
@@ -50,5 +50,10 @@
     </div>
   </section>
 </div>
-
+<script>
+  $('#sports-btn').on('click', function(event) {
+    event.preventDefault();
+    $.scrollTo('#sports', {duration:800});
+  })
+</script>
 <script>$(App.initialize);</script>
