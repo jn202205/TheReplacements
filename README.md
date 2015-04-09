@@ -11,8 +11,8 @@ recreational sports team. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
+- [x] Create accounts
+- [x] Create sessions (log in)
 - [ ] Search for players
 - [ ] Location based results
 - [ ] Pick players/schedule pairings(task)
