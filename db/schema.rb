@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408003945) do
+ActiveRecord::Schema.define(version: 20150409174809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "positions", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.integer  "sport_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "positions", ["sport_id"], name: "index_positions_on_sport_id", using: :btree
+  add_index "positions", ["title"], name: "index_positions_on_title", using: :btree
+
+  create_table "sports", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sports", ["name"], name: "index_sports_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "fname",           limit: 50,                 null: false
@@ -37,4 +55,5 @@ ActiveRecord::Schema.define(version: 20150408003945) do
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
   add_index "users", ["zipcode"], name: "index_users_on_zipcode", using: :btree
 
+  add_foreign_key "positions", "sports"
 end
