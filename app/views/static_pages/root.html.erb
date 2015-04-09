@@ -4,22 +4,24 @@
   </section>
   <section class="hiw">
     <div class="container">
-      <h2>How <strong>WreckYourLeague</strong> Works</h2>
-      <%= render 'static_pages/hiw_item',
-        hiw_item: 'pencil',
-        hiw_title: 'Tell Us About Your Game',
-        hiw_text: 'This will help us find the best players for your team'
-      %>
-      <%= render 'static_pages/hiw_item',
-        hiw_item: 'users',
-        hiw_title: 'Pick a player',
-        hiw_text: 'Players are rated based on their performance in every game'
-      %>
-      <%= render 'static_pages/hiw_item',
-        hiw_item: 'trophy',
-        hiw_title: 'Have fun, winning',
-        hiw_text: 'This will help us find the best players for your team'
-      %>
+        <div class="row">
+          <h2 class="col-xs-12">How <strong>WreckYourLeague</strong> Works</h2>
+          <%= render 'static_pages/hiw_item',
+            hiw_item: 'pencil',
+            hiw_title: 'Tell Us About Your Game',
+            hiw_text: 'This will help us find the best players for your team'
+          %>
+          <%= render 'static_pages/hiw_item',
+            hiw_item: 'users',
+            hiw_title: 'Pick a player',
+            hiw_text: 'Players are rated based on their performance in every game'
+          %>
+          <%= render 'static_pages/hiw_item',
+            hiw_item: 'trophy',
+            hiw_title: 'Have fun, winning',
+            hiw_text: 'This will help us find the best players for your team'
+          %>
+        </div>
     </div>
   </section>
   <section class="sports">
