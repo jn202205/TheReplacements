@@ -1,0 +1,4 @@
+en:
+  faker:
+    name:
+      sport: [Basketball, Bowling, Flag Football, Soccer, Softball, Volleyball]
