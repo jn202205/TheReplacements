@@ -71,6 +71,12 @@ ul {
     h3 {
       padding-left: 5%;
     }
+    .gs-btn {
+      text-align: center;
+      .btn {
+        min-width: 284px;
+      }
+    }
   }
   .hiw {
     color: darkgrey;
