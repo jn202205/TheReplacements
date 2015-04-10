@@ -10,7 +10,7 @@
 
 class Sport < ActiveRecord::Base
 
-  SPORTS = ["Basketball", "Bowling", "Football", "Soccer", "Softball", "Volleyball"]
+  SPORTS = ["Basketball", "Bowling", "Flag Football", "Soccer", "Softball", "Volleyball"]
   validates :name, presence: true, inclusion: { in: SPORTS }
 
   has_many :player_sports, dependent: :destroy
