@@ -18,6 +18,7 @@
 //= require backbone
 //= require app
 //= require composite_view
+//= require get_or_fetch
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
