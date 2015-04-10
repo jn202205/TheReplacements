@@ -1,12 +1,15 @@
 <div class="static-homepage">
   <section class="header dashboard-head">
-    <%= render 'layouts/header', view: 'dashboard' %>
-    <h1>Dashboard</h1>
+    <%= render 'dashboard_head' %>
+  </section>
+  <section class="container">
+    <div class="row">
+      <div class="sections col-sm-8 col-xs-12">
+        <ul class="tasks">
+        </ul>
+      </div>
+      <div class="sidebar col-sm-4 hidden-xs">
+      </div>
+    </div>
   </section>
 </div>
-<script>
-$('#sports-btn').on('click', function(event) {
-  event.preventDefault();
-  $.scrollTo('#sports', {duration:800});
-})
-</script>
