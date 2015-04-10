@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if @user
       sign_in!(@user)
-      redirect_to api_user_path(@user)
+      redirect_to dashboard_path
     else
       flash.now[:error] = "Invalid username and/or password"
       render :new
