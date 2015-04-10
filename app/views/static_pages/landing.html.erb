@@ -1,6 +1,6 @@
 <div class="static-homepage">
-  <section class="header">
-    <%= render 'layouts/header' %>
+  <section class="header landing-head">
+    <%= render 'layouts/header', view: 'landing' %>
   </section>
   <section class="hiw">
     <div class="container">
@@ -44,4 +44,4 @@ $('#sports-btn').on('click', function(event) {
   $.scrollTo('#sports', {duration:800});
 })
 </script>
-<script>$(App.initialize);</script>
+<!--<script>$(App.initialize);</script>-->

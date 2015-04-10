@@ -1,0 +1,12 @@
+<div class="static-homepage">
+  <section class="header dashboard-head">
+    <%= render 'layouts/header', view: 'dashboard' %>
+    <h1>Dashboard</h1>
+  </section>
+</div>
+<script>
+$('#sports-btn').on('click', function(event) {
+  event.preventDefault();
+  $.scrollTo('#sports', {duration:800});
+})
+</script>

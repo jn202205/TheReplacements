@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#root'
+  root to: 'static_pages#landing'
+
+  get 'landing', to: 'static_pages#landing'
+  get 'dashboard', to: 'static_pages#dashboard'
+
   resources :users, only: [:new, :create, :edit]
   resource :session, only: [:new, :create, :destroy]
   namespace :api, defaults: { format: :json } do
