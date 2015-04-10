@@ -1,0 +1,11 @@
+<div class="btn-group" role="group" aria-label="..."> 
+  <% if signed_in? %>
+    <a href="#dashboard" class="btn btn-default">Dashboard</a>
+    <a href="#account" class="btn btn-default">How it works</a>
+    <%= link_to 'Sign out', session_path, class: "btn btn-default", method: :delete %>
+  <% else %>
+    <a href="<%= new_user_path %>" class="btn btn-default">Sign Up</a>
+    <a href="#" class="btn btn-default">How it works</a>
+    <a href="<%= new_session_path %>" class="btn btn-default">Login</a>
+  <% end %>
+</div>
