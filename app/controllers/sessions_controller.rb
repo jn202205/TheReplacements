@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in!(@user)
       redirect_to api_user_path(@user)
     else
-      flash.now[:errors] = ["Invalid email and/or password"]
+      flash.now[:error] = "Invalid username and/or password"
       render :new
     end
   end

@@ -133,12 +133,14 @@ ul {
   width: 100%;
   min-height: 100vh;
   .form-container {
-    padding: 20px 20px 10px;
+    max-width: 493px;
+    margin: 0 auto;
+    padding: 22px 28px 80px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 4px;
   }
   #error_explanation > ul {
-    padding: 0
+    padding: 0;
   }
   h3 {
     margin: 0 0 20px;
