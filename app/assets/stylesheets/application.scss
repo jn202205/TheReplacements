@@ -22,11 +22,7 @@
 .header {
   padding: 48px 0;
   margin-bottom: 30px;
-  color: white;
   box-sizing: border-box;
-  h1 {
-    float: left;
-  }
   .btn-group {
     top: 8px;
     float: right;
@@ -58,13 +54,20 @@ ul {
     padding-left: 5%;
   }
   .header {
-    color: white;
     padding-left: 5%;
     padding-right: 5%;
-    background-image: url("http://photos3.meetupstatic.com/photos/theme_body/8/f/a/4/full_2016772.jpeg");
     background-size: cover;
     background-position: 50% 50%;
     margin-bottom: 0;
+  }
+  //landing page when not signed in
+  // landing page header
+  .landing-head {
+    color: white;
+    background-image: url("http://photos3.meetupstatic.com/photos/theme_body/8/f/a/4/full_2016772.jpeg");
+    h1 {
+      float: left;
+    }
     h1, h3 {
       text-shadow: 2px 2px 5px black;
     }
@@ -78,6 +81,7 @@ ul {
       }
     }
   }
+  // how it works section on landing page
   .hiw {
     color: darkgrey;
     text-align: center;
@@ -105,6 +109,7 @@ ul {
       }
     }
   }
+  // section on landing page showing sports
   .sports {
     text-align: center;
     padding: 2% 0;
@@ -126,10 +131,42 @@ ul {
       }
     }
   }
+  /* user dashboard */
+  .dashboard-head {
+    background-color: #EDEFF1;
+  }
+  #dashboard-content {
+    .sections {
+      border: 2px solid blue;
+      .cards-container > h3 {
+        padding-left: 15px;
+        margin-bottom: 1em;
+      }
+      .player-card {
+        text-align: center;
+        border: 1px solid black;
+        .avatar-container {
+          margin: -10px auto 5px auto;
+          position: relative;
+        }
+        img {
+          border-radius: 50%;
+        }
+        .player-sports > ul {
+          padding: 0;
+        }
+      }
+    }
+    .sidebar {
+      border: 2px solid #8d2222;
+      top: -2em;
+      //delete these
+      height: 100px;
+    }
+  }
 }
 
 /* User auth */
-
 .user-auth {
   padding: 48px 5%;
   background-image: url("http://cdn2.sportngin.com/attachments/news_article/2258/0954/IMG_9007__2_.jpg");
