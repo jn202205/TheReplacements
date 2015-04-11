@@ -3,8 +3,8 @@ window.App = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    new App.Routers.Router();
+  initialize: function(options) {
+    new App.Routers.Router(options.$rootEl);
     Backbone.history.start();
   }
 };

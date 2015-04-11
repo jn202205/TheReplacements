@@ -2,14 +2,23 @@
   <section class="header dashboard-head">
     <%= render 'dashboard_head' %>
   </section>
-  <section class="container">
+  <section id="dashboard-content" class="container">
     <div class="row">
       <div class="sections col-sm-8 col-xs-12">
-        <ul class="tasks">
-        </ul>
+        <div class="pop_sports">
+          <ul>
+          </ul>
+        </div>
+        <div class="area-players">
+        </div>
       </div>
       <div class="sidebar col-sm-4 hidden-xs">
       </div>
     </div>
   </section>
 </div>
+<script>
+  $(App.initialize({
+    $rootEl: $('#content')
+  }));
+</script>
