@@ -52,7 +52,7 @@ women.each_with_index do |name, index|
     password: password,
     zipcode: zipcode,
     elite: elite,
-    img_url: "https://randomuser.me/api/portraits/women/#{index}.jpg"
+    img_url: "https://randomuser.me/api/portraits/med/women/#{index}.jpg"
   )
   print user.save ? 'U ' : 'Fu '
 
@@ -75,7 +75,7 @@ men.each_with_index do |name, index|
     password: password,
     zipcode: zipcode,
     elite: elite,
-    img_url: "https://randomuser.me/api/portraits/men/#{index}.jpg"
+    img_url: "https://randomuser.me/api/portraits/med/men/#{index}.jpg"
   )
   print user.save ? 'U ' : 'Fu '
 
