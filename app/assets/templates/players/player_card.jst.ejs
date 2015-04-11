@@ -1,0 +1,14 @@
+<div class="avatar-container">
+  <img src="<%= player.get('img_url') %>">
+  <h3 class="card-name"><%= player.escape('fname') %></h3>
+</div>
+<div class="player-sports">
+  <ul>
+    <% player.sports().each(function(sport) { %>
+      <li><%= sport.get('name') %></li>
+    <% }) %>
+  </ul>
+</div>
+<div class="card-actions">
+
+</div>
