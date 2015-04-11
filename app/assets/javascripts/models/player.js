@@ -1,5 +1,5 @@
 App.Models.Player = Backbone.Model.extend({
-  urlRoot: 'api/users',
+  urlRoot: 'api/players',
 
   sports: function() {
     if (!this._sports) {

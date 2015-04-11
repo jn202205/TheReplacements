@@ -1,4 +1,6 @@
 App.Collections.Players = Backbone.Collection.extend({
-  url: 'api/users',
-  model: App.Models.Player
+  url: 'api/players',
+  model: App.Models.Player,
 });
+
+App.players = new App.Collections.Players();
