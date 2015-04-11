@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in!(@user)
-        #TODO: redirect to user_dashboard on sign in
-        format.html { redirect_to api_user_path(@user), notice: 'Successful sign up.' }
+        format.html { redirect_to dashboard_path, notice: 'Successful sign up.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -25,8 +24,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        #TODO: redirect to user_dashboard on sign in
-        format.html { redirect_to api_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to dashboard_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
