@@ -1,5 +1,7 @@
 module Api
   class SportsController < ApplicationController
+    before_action :require_signed_in!
+
     def index
       @sports = Sport.all
     end
