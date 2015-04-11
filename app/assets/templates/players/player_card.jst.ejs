@@ -1,14 +1,16 @@
-<div class="avatar-container">
-  <img src="<%= player.get('img_url') %>">
-  <h3 class="card-name"><%= player.escape('fname') %></h3>
-</div>
-<div class="player-sports">
-  <ul>
-    <% player.sports().each(function(sport) { %>
-      <li><%= sport.get('name') %></li>
-    <% }) %>
-  </ul>
-</div>
-<div class="card-actions">
-
+<div class="col-sm-4 col-xs-12">
+  <div class="thumbnail">
+    <img src="<%= player.get('img_url') %>">
+    <div class="caption">
+      <h3><%= player.escape('fname') %></h3>
+      <ul>
+        <% player.sports().each(function(sport) { %>
+          <li><%= sport.get('name') %></li>
+        <% }) %>
+      </ul>
+      <p>
+      <a href="#" class="btn btn-default" role="button">Pick me</a>
+      </p>
+    </div>
+  </div>
 </div>
