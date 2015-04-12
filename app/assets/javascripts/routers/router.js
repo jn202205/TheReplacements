@@ -1,12 +1,6 @@
 App.Routers.Router = Backbone.Router.extend({
   initialize: function($rootEl) {
     this.$rootEl = $rootEl;
-    var collection;
-    if ($rootEl.attr('id') == 'dashboard-content') {
-      collection = new App.Collections.Players();
-    }
-
-    this.collection = collection;
   },
 
   routes: {
