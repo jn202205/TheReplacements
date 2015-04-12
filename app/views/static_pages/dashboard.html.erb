@@ -1,25 +1,8 @@
 <div class="static-homepage">
-  <section class="header dashboard-head">
-    <%= render 'dashboard_header' %>
-  </section>
-  <section id="dashboard-content" class="container">
-    <div class="row">
-      <div class="sections col-md-8 col-xs-12">
-        <div class="pop_sports">
-          <ul>
-          </ul>
-        </div>
-        <div class="area-players">
-        </div>
-      </div>
-      <div class="sidebar col-md-4 hidden-xs hidden-sm">
-        <%= render 'sidebar' %>
-      </div>
-    </div>
-  </section>
 </div>
 <script>
-  $(App.initialize({
-    $rootEl: $('#content')
-  }));
+App.currUser = <%= current_user.id %>
+$(App.initialize({
+  $rootEl: $(".static-homepage")
+}));
 </script>

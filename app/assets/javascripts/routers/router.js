@@ -1,24 +1,14 @@
 App.Routers.Router = Backbone.Router.extend({
   initialize: function($rootEl) {
     this.$rootEl = $rootEl;
-  },
+   },
 
-  routes: {
-    "": 'listAreaPlayers'
-  },
+   routes: {
+     "": 'renderDashboard'
+   },
 
-  listAreaPlayers: function() {
-    App.players.fetch({
-      data: {
-        limit: 3
-      }
-    });
-
-    var view = new App.Views.AreaPlayers({
-      collection: App.players,
-      el: '.area-players'
-    });
-
+   renderDashboard: function() {
+     view = new App.Views.Dashboard();
     this._swapView(view);
   },
 
