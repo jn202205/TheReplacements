@@ -5,10 +5,11 @@ module Api
     def index
       limit = params[:limit].to_i
       if limit > 0
-        @users = User.where(zipcode: current_user.zipcode).sample(limit)
+        @users = User.where(zipcode: current_user.zipcode)
+                     .where.not(id: current_user.id)
+                     .sample(limit)
       else
         @users = User.all
-        # @users = User.where(zipcode: current_user.zipcode)
       end
     end
 
