@@ -7,12 +7,12 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.renderHeader();
-    //this.listAreaPlayers();
+    this.listAreaPlayers();
     return this;
   },
 
   renderHeader: function() {
-    var currUser = App.players.getOrFetch(App.currUser);
+    var currUser = new App.Models.Player({id: App.currUser});
     var view = new App.Views.Header({
       model: currUser
     });
@@ -20,17 +20,17 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
     this.addSubview('.dashboard-head', view);
   },
 
-  // listAreaPlayers: function() {
-  //   App.players.fetch({
-  //     data: {
-  //       limit: 3
-  //     }
-  //   });
-  //   var view = new App.Views.AreaPlayers({
-  //     collection: App.players,
-  //   });
+  listAreaPlayers: function() {
+    App.players.fetch({
+      data: {
+        limit: 3
+      }
+    });
+    var view = new App.Views.AreaPlayers({
+      collection: App.players,
+    });
 
-  //   this.addSubview('.area-players', view);
-  // },
+    this.addSubview('.area-players', view);
+  },
 
 });
