@@ -19,7 +19,7 @@ App.Views.AreaPlayers = Backbone.CompositeView.extend({
   render: function() {
     var content = this.template();
     this.$el.html(content);
-    this.addPlayerCards(this.collection);
+    this.addPlayerCards();
     this.attachSubviews();
     return this;
   },

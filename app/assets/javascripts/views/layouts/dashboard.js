@@ -7,20 +7,12 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.renderHeader();
-    this.listAreaPlayers();
+    this.renderAreaPlayers();
+    this.renderSidebar();
     return this;
   },
 
-  renderHeader: function() {
-    var currUser = new App.Models.Player({id: App.currUser});
-    var view = new App.Views.Header({
-      model: currUser
-    });
-
-    this.addSubview('.dashboard-head', view);
-  },
-
-  listAreaPlayers: function() {
+  renderAreaPlayers: function() {
     App.players.fetch({
       data: {
         limit: 3
@@ -32,5 +24,26 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
 
     this.addSubview('.area-players', view);
   },
+
+  renderHeader: function() {
+    var currUser = new App.Models.Player({id: App.currUser});
+    currUser.fetch();
+    var view = new App.Views.Header({
+      model: currUser
+    });
+
+    this.addSubview('.dashboard-head', view);
+  },
+
+  renderSidebar: function() {
+    App.sports.fetch({
+      data: { limit: 6 }
+    });
+    var view = new App.Views.Sidebar({
+      collection: App.sports
+    });
+
+    this.addSubview('.sidebar', view);
+  }
 
 });

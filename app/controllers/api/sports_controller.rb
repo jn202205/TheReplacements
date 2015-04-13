@@ -3,7 +3,12 @@ module Api
     before_action :require_signed_in!
 
     def index
-      @sports = Sport.all
+      limit = params[:limit].to_i
+      if limit > 0
+        @sports = Sport.all.sample(limit)
+      else
+        @sports = Sport.all
+      end
     end
 
     def show
