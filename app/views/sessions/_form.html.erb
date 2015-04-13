@@ -27,8 +27,17 @@
     <div>
       <%= f.submit 'Login', class: "col-xs-12 btn btn-default" %>
     </div>
+    <div>
+      <%= f.submit 'Guest Login', class: "guest-login col-xs-12 btn btn-default" %>
+    </div>
   </div>
   <div>
     <%= link_to 'New user? Sign Up.', new_user_path %>
   </div>
 <% end %>
+<script type="text/javascript" charset="utf-8">
+$('.guest-login').click(function() {
+  $("input[name='session[email]']").val('watson@example.net');
+  $("input[name='session[password]']").val('password');
+})
+</script>
