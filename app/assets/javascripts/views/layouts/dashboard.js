@@ -1,5 +1,6 @@
 App.Views.Dashboard = Backbone.CompositeView.extend({
   template: JST['dashboard/dashboard'],
+  className: 'static-homepage',
 
   initialize: function() {},
 
@@ -22,7 +23,7 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
       collection: App.players,
     });
 
-    this.addSubview('.area-players', view);
+    this.addSubview('.sections', view);
   },
 
   renderHeader: function() {

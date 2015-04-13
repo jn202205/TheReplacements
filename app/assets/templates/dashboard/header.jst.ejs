@@ -1,13 +1,11 @@
-<div class="row">
-  <div class="btn-group" role="group" aria-label="..."> 
-    <a href="" class="btn btn-default">Dashboard</a>
-    <a href="#account" class="btn btn-default">How it works</a>
-    <a href="/session" class="btn btn-default" rel="nofollow" data-method="delete">Sign out</a>
-  </div>
-  <div class="clearfix">
-    <div class="dash-welcome row">
-      <h1>Welcome, <%= user.escape('fname') %></h1>
-      <p>We can’t wait to help your team start playing better.</p>
-    </div>
+<div class="btn-group" role="group" aria-label="..."> 
+  <a href="" class="btn btn-default">Dashboard</a>
+  <a href="#account" class="btn btn-default">Account</a>
+  <a href="/session" class="btn btn-default" rel="nofollow" data-method="delete">Sign out</a>
+</div>
+<div class="clearfix">
+  <div class="dash-welcome row">
+    <h1>Welcome, <%= user.escape('fname') %></h1>
+    <p>We can’t wait to help your team start playing better.</p>
   </div>
 </div>

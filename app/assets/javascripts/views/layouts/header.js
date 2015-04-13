@@ -1,5 +1,6 @@
 App.Views.Header = Backbone.CompositeView.extend({
   template: JST['dashboard/header'],
+  className: "row",
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);

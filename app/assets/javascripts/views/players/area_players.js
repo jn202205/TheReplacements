@@ -1,5 +1,6 @@
 App.Views.AreaPlayers = Backbone.CompositeView.extend({
   template: JST['players/area_players'],
+  className: 'area-players',
 
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.render);
