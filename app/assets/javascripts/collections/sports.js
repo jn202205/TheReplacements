@@ -3,4 +3,3 @@ App.Collections.Sports = Backbone.Collection.extend({
   model: App.Models.Sport
 });
 
-App.sports = new App.Collections.Sports();

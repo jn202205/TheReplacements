@@ -2,15 +2,31 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   template: JST['dashboard/dashboard'],
   className: 'static-homepage',
 
-  initialize: function() {},
+  initialize: function() {
+  },
 
   render: function() {
     var content = this.template();
     this.$el.html(content);
     this.renderHeader();
+    this.renderUserSports();
     this.renderAreaPlayers();
     this.renderSidebar();
     return this;
+  },
+
+  renderUserSports: function() {
+    this.userSports = new App.Collections.Sports();
+    this.userSports.fetch({
+      data: {
+        current_user: true
+      }
+    });
+    var view = new App.Views.UserSports({
+      collection: this.userSports
+    });
+
+    this.addSubview('.your-sports', view);
   },
 
   renderAreaPlayers: function() {
@@ -35,11 +51,12 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   },
 
   renderSidebar: function() {
-    App.sports.fetch({
+    this.sports = new App.Collections.Sports();
+    this.sports.fetch({
       data: { limit: 6 }
     });
     var view = new App.Views.Sidebar({
-      collection: App.sports
+      collection: this.sports
     });
 
     this.addSubview('.sidebar', view);

@@ -4,8 +4,10 @@ module Api
 
     def index
       limit = params[:limit].to_i
-      if limit > 0
+      if  limit > 0
         @sports = Sport.all.sample(limit)
+      elsif params[:current_user] = true
+        @sports = current_user.sports
       else
         @sports = Sport.all
       end
