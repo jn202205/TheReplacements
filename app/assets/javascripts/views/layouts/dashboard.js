@@ -27,10 +27,8 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   },
 
   renderHeader: function() {
-    var currUser = new App.Models.Player({id: App.currUser});
-    currUser.fetch();
     var view = new App.Views.Header({
-      model: currUser
+      model: this.model
     });
 
     this.addSubview('.dashboard-head', view);

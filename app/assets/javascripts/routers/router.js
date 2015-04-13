@@ -8,7 +8,9 @@ App.Routers.Router = Backbone.Router.extend({
    },
 
    renderDashboard: function() {
-     view = new App.Views.Dashboard();
+     view = new App.Views.Dashboard({
+       model: App.currUser
+     });
     this._swapView(view);
   },
 
