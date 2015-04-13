@@ -21,6 +21,7 @@
 * {
   color: #8d2222;
 }
+
 a:hover {
   text-decoration: none;
 }
@@ -151,6 +152,39 @@ ul {
     .sections {
       h3 {
         margin-bottom: 1em;
+      }
+      a.btn.btn-default {
+        background-color: #8d2222;
+        color: white;
+        border: 1px solid #8d2222;
+        font-weight: 500;
+        width: 100%;
+        max-width: 200px;
+        box-shadow: 2px 2px 5px black;
+        position: relative;
+        top: -2px;
+      }
+      a.btn.btn-default:active {
+        position: relative;
+        top: 0px;
+        background-color: #8d2222;
+        color: white;
+      }
+      .add-sport {
+        text-align: center;
+        a.btn-default {
+          max-width: 50%;
+          min-width: 396px;
+        }
+      }
+      .sport-listings {
+        padding: 0;
+        .sport-listing {
+          background-color: #edeff1;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          margin-bottom: 10px;
+        }
       }
       .player-card {
         text-align: center;

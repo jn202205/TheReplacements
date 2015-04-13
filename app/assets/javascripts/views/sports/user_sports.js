@@ -4,7 +4,6 @@ App.Views.UserSports = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.render);
-    this.listenTo(this.collection, 'add', this.render);
   },
 
   render: function() {
@@ -21,7 +20,7 @@ App.Views.UserSports = Backbone.CompositeView.extend({
       model: sport
     });
 
-    this.addSubview('user-sports', view);
+    this.addSubview('.sport-listings', view);
   },
 
   addSports: function() {

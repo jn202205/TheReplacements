@@ -1,7 +1,7 @@
 App.Views.SportListing = Backbone.View.extend({
   template: JST['sports/sport_listing'],
   tagName: 'li',
-  className: 'sport-listing',
+  className: 'sport-listing col-xs-12',
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
