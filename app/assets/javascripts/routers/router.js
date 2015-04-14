@@ -17,6 +17,7 @@ App.Routers.Router = Backbone.Router.extend({
 
   renderSportForm: function() {
     var view = new App.Views.SportForm({
+      model:App.currUser
     });
 
     this._swapView(view);

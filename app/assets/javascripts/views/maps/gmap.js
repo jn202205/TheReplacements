@@ -13,7 +13,7 @@ App.Views.GoogleMaps = Backbone.View.extend({
         lat: 37.7833,
         lng: -122.4167
       },
-      zoom: 14
+      zoom: 13
     };
 
     var sf = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
@@ -26,7 +26,7 @@ App.Views.GoogleMaps = Backbone.View.extend({
       navigator.geolocation.getCurrentPosition(function(position) {
         var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this._map.setCenter(initialLocation);
-      }, function() {
+      }.bind(this), function() {
         handleNoGeolocation(browserSupportFlag);
       });
     }
@@ -48,7 +48,6 @@ App.Views.GoogleMaps = Backbone.View.extend({
       },
       polygonOptions: {
         editable: true,
-        draggable: true
       }
     });
 
@@ -58,7 +57,6 @@ App.Views.GoogleMaps = Backbone.View.extend({
       var overlayCoords = event.overlay.getPath();
       //TODO store this polygon in a string column in user table
       var polygon = google.maps.geometry.encoding.encodePath(overlayCoords);
-      console.log(polygon);
     });
 
     // RECREATING THE POLYGON FROM ENCODED PATH
@@ -70,7 +68,7 @@ App.Views.GoogleMaps = Backbone.View.extend({
     //   strokeWeight: 3,
     //   fillColor: "#FF0000",
     //   fillOpacity: 0.35,
-    //     editable: true
+    //   editable: true
     // });
 
     this.attachMapListeners();

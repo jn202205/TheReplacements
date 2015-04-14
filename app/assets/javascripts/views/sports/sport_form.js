@@ -1,13 +1,14 @@
 App.Views.SportForm = Backbone.CompositeView.extend({
   template: JST['sports/form'],
+  className: 'static-homepage',
 
   initialize: function() {
-
   },
 
   render: function() {
     var content = this.template();
     this.$el.html(content);
+    this.renderHeader();
     this.displayMap();
 
     return this;
@@ -18,10 +19,16 @@ App.Views.SportForm = Backbone.CompositeView.extend({
       model: App.currUser
     });
     this.$('.gmap-container').append(view.$el);
-    // TODO: initialize map with center points
-    // from currentuser ip address converted to 
-    // lattitude and longitude, use google or geocoder
     view.initializeMap();
     this.addSubview('.map-container', view);
-  }
+  },
+
+  renderHeader: function() {
+    var view = new App.Views.Header({
+      model: this.model
+    });
+
+    this.addSubview('.dashboard-head', view);
+  },
+
 });
