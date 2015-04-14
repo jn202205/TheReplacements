@@ -1,9 +1,11 @@
 App.Views.GoogleMaps = Backbone.View.extend({
   attributes: {
-    id: "map-canvas"
+    id: 'map-canvas'
   },
 
-  initialize: function() {},
+  initialize: function(options) {
+    this.parentView = options.parentView;
+  },
 
   // longitude: D, Latitude: k
   initializeMap: function() {
@@ -37,6 +39,16 @@ App.Views.GoogleMaps = Backbone.View.extend({
       map.setCenter(location);
     }
 
+    this._setupDrawingManager();
+
+    this.attachMapListeners();
+
+    setTimeout(function(){
+      google.maps.event.trigger(this._map, 'resize');
+    }.bind(this), 0);
+  },
+
+  _setupDrawingManager: function() {
     var drawingManager = new google.maps.drawing.DrawingManager({
       drawingMode: google.maps.drawing.OverlayType.POLYGON,
       drawingControl: true,
@@ -58,23 +70,10 @@ App.Views.GoogleMaps = Backbone.View.extend({
 
     google.maps.event.addListener(drawingManager, "overlaycomplete", function(event) {
       var overlayCoords = event.overlay.getPath();
+      this.parentView.overlay = event.overlay;
       //TODO store this polygon in a string column in user table
       var polygon = google.maps.geometry.encoding.encodePath(overlayCoords);
-    });
-
-    // RECREATING THE POLYGON FROM ENCODED PATH
-    // newShape = new google.maps.Polygon({
-    //   paths: google.maps.geometry.encoding.decodePath(myPoly), //DECODE SAVED PATH
-    //   NONE OF THIS IS NECESSARY UNLESS I WANT TO REDRAW THE USERS BOUNDARIES
-    //   strokeColor: "#FF0000",
-    //   strokeOpacity: 0.8,
-    //   strokeWeight: 3,
-    //   fillColor: "#FF0000",
-    //   fillOpacity: 0.35,
-    //   editable: true
-    // });
-
-    this.attachMapListeners();
+    }.bind(this));
   },
 
   attachMapListeners: function() {},

@@ -3,6 +3,11 @@ App.Views.SportForm = Backbone.CompositeView.extend({
   className: 'static-homepage',
 
   initialize: function() {
+    this.overlay = "";
+  },
+
+  events: {
+    "click .clear-map": "clearMap"
   },
 
   render: function() {
@@ -14,9 +19,18 @@ App.Views.SportForm = Backbone.CompositeView.extend({
     return this;
   },
 
+  clearMap: function(event) {
+    event.preventDefault();
+    if (this.overlay !== "") {
+      this.overlay.setMap(null);
+    }
+    this.overlay = "";
+  },
+
   displayMap: function() {
     var view = new App.Views.GoogleMaps({
-      model: App.currUser
+      model: App.currUser,
+      parentView: this
     });
     this.$('.gmap-container').append(view.$el);
     view.initializeMap();
