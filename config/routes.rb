@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit]
   resource :session, only: [:new, :create, :destroy]
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:index, :show], path: '/players'
+    resources :users, only: [:index, :show, :update], path: '/players'
     resources :sports, only: [:index, :show]
   end
 end

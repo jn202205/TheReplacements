@@ -43,7 +43,7 @@ App.Views.GoogleMaps = Backbone.View.extend({
 
     this.attachMapListeners();
 
-    setTimeout(function(){
+    setTimeout(function() {
       google.maps.event.trigger(this._map, 'resize');
     }.bind(this), 0);
   },
@@ -72,7 +72,7 @@ App.Views.GoogleMaps = Backbone.View.extend({
       var overlayCoords = event.overlay.getPath();
       this.parentView.overlay = event.overlay;
       //TODO store this polygon in a string column in user table
-      var polygon = google.maps.geometry.encoding.encodePath(overlayCoords);
+      this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(overlayCoords));
     }.bind(this));
   },
 

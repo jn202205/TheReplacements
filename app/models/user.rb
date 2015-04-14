@@ -20,6 +20,5 @@ class User < ActiveRecord::Base
   include UserAuth
 
   has_many :player_sports, foreign_key: :player_id, dependent: :destroy
-  # has_many :sports, -> { distinct },  through: :player_sports, source: :sport
   has_many :sports, through: :player_sports, source: :sport
 end

@@ -6,6 +6,10 @@ App.Views.SportsFormSidebar = Backbone.View.extend({
     this.listenTo(this.collection, 'sync', this.render);
   },
 
+  events: {
+    'submit': 'submitForm'
+  },
+
   render: function() {
     var content = this.template({
       sports: this.collection
@@ -13,5 +17,14 @@ App.Views.SportsFormSidebar = Backbone.View.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  submitForm: function(event) {
+    event.preventDefault();
+    var player = new App.Models.Player({
+      id: App.currUser.id,
+    });
+    player.set($(event.target).serializeJSON());
+    player.save();
   }
 });
