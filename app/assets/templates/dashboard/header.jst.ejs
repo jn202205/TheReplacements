@@ -5,7 +5,7 @@
 </div>
 <div class="clearfix">
   <div class="dash-welcome row">
-    <h1>Welcome, <%= user.escape('fname') %></h1>
+    <h1><%= user.escape('fname') + " " + user.escape('lname') %></h1>
     <p>We can’t wait to help your team start playing better.</p>
   </div>
 </div>
