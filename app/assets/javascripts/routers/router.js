@@ -4,13 +4,21 @@ App.Routers.Router = Backbone.Router.extend({
    },
 
    routes: {
-     "": 'renderDashboard'
+     "": 'renderDashboard',
+     "sports_form": 'renderSportForm'
    },
 
    renderDashboard: function() {
-     view = new App.Views.Dashboard({
+    var view = new App.Views.Dashboard({
        model: App.currUser
      });
+    this._swapView(view);
+  },
+
+  renderSportForm: function() {
+    var view = new App.Views.SportForm({
+    });
+
     this._swapView(view);
   },
 
@@ -18,7 +26,7 @@ App.Routers.Router = Backbone.Router.extend({
     if (this.currentView) {
       this.currentView.remove();
     }
-    this.currentView = view;
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(view.$el);
+    view.render();
   }
 });

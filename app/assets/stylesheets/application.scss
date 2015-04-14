@@ -22,6 +22,12 @@
   color: #8d2222;
 }
 
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -244,6 +250,11 @@ ul {
       }
     }
   }
+}
+
+/* Sports signup form */
+.map-container {
+  height: 100vh;
 }
 
 /* User auth */

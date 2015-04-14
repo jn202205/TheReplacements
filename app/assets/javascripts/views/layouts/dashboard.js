@@ -2,7 +2,17 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   template: JST['dashboard/dashboard'],
   className: 'static-homepage',
 
-  initialize: function() {
+  initialize: function() {},
+
+  events: {
+    'click .add-sport': 'addEditSports'
+  },
+
+  addEditSports: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate('/sports_form', {
+      trigger: true
+    });
   },
 
   render: function() {
@@ -53,7 +63,9 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   renderSidebar: function() {
     this.sports = new App.Collections.Sports();
     this.sports.fetch({
-      data: { limit: 6 }
+      data: {
+        limit: 6
+      }
     });
     var view = new App.Views.Sidebar({
       collection: this.sports
