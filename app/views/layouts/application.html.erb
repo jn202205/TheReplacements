@@ -8,12 +8,9 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
 
-    <% if Rails.env.production? %>
-      <% api_key = "key=AIzaSyCGKIu7lfNdhnpyXblMGuX9m_8Fvsmd0-8" %>
-    <% else %>
-      <% api_key = '' %>
-    <% end %>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=drawing,geometry"></script>
+    <% api_key = ENV["GOOGLE_MAPS_API_KEY"] %>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?<%= api_key %>&libraries=drawing,geometry"></script>
   </head>
   <body>
     <%= yield %>

@@ -16,6 +16,7 @@ gem 'font-awesome-rails'
 gem 'newrelic_rpm'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails_12factor'
+gem 'figaro'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
