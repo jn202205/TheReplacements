@@ -6,9 +6,9 @@ module Api
       limit = params[:limit].to_i
       if  limit > 0
         @sports = Sport.all.sample(limit)
-      elsif params[:current_user] = true
+      elsif params[:current_user] == 'true'
         @sports = current_user.sports
-      else
+      elsif params[:all_sports] == 'true'
         @sports = Sport.all
       end
     end

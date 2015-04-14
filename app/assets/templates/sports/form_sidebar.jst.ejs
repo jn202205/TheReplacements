@@ -1,0 +1,19 @@
+<form class="form" action="">
+  <h3>Sports</h3>
+  <p>Select all the sports you want to play</p>
+  <div class="form-group">
+    <% sports.each(function(sport) { %>
+      <div class="checkbox form-group">
+        <label>
+          <input type="checkbox" value="<%= sport.id %>">
+          <%= sport.get('name') %>
+        </label>
+      </div>
+    <% }) %>
+  </div>
+  <div class="form-group">
+    <label for="experience">Experience</label>
+    <textarea class="form-control" id="experience" placeholder="Describe your experience"></textarea>
+  </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

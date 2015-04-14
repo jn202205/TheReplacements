@@ -14,9 +14,25 @@ App.Views.SportForm = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.renderHeader();
+    this.renderSidebar();
     this.displayMap();
 
     return this;
+  },
+
+  renderSidebar: function() {
+    this.sports = new App.Collections.Sports();
+    this.sports.fetch({
+      data: {
+        all_sports: true,
+        current_user: false
+      }
+    });
+    var view = new App.Views.SportsFormSidebar({
+      collection: this.sports
+    });
+
+    this.addSubview('.form-container', view);
   },
 
   clearMap: function(event) {

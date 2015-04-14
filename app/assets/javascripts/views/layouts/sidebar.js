@@ -11,6 +11,7 @@ App.Views.Sidebar = Backbone.CompositeView.extend({
       collection: this.collection,
       model: sport
     });
+
     this.addSubview('.row', view);
   },
 
@@ -23,6 +24,7 @@ App.Views.Sidebar = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.addSportCards();
     this.attachSubviews();
+
     return this;
   },
 });

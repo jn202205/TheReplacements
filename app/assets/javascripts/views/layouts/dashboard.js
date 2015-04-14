@@ -32,6 +32,7 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
         current_user: true
       }
     });
+
     var view = new App.Views.UserSports({
       collection: this.userSports
     });
@@ -40,13 +41,14 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   },
 
   renderAreaPlayers: function() {
-    App.players.fetch({
+    this.players = new App.Collections.Players();
+    this.players.fetch({
       data: {
         limit: 3
       }
     });
     var view = new App.Views.AreaPlayers({
-      collection: App.players,
+      collection: this.players,
     });
 
     this.addSubview('.sections', view);

@@ -1,23 +1,27 @@
 App.Routers.Router = Backbone.Router.extend({
   initialize: function($rootEl) {
     this.$rootEl = $rootEl;
-   },
+  },
 
-   routes: {
-     "": 'renderDashboard',
-     "sports_form": 'renderSportForm'
-   },
+  routes: {
+    "": 'renderDashboard',
+    "sports_form": 'renderSportForm'
+  },
 
-   renderDashboard: function() {
+  renderDashboard: function() {
     var view = new App.Views.Dashboard({
-       model: App.currUser
-     });
+      model: App.currUser
+    });
     this._swapView(view);
   },
 
   renderSportForm: function() {
+    var sports = new App.Collections.Sports();
+    sports.fetch();
+
     var view = new App.Views.SportForm({
-      model:App.currUser
+      model: App.currUser,
+      collection: sports
     });
 
     this._swapView(view);
