@@ -48,6 +48,9 @@ App.Views.GoogleMaps = Backbone.View.extend({
       },
       polygonOptions: {
         editable: true,
+        strokeColor: "#8d2222",
+        strokeWeight: 3,
+        fillColor: "#8d2222",
       }
     });
 
