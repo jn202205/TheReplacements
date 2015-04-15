@@ -5,13 +5,22 @@ App.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": 'renderDashboard',
-    "sports_form": 'renderSportForm'
+    "sports_form": 'renderSportForm',
+    "player_search": 'renderPlayerSearch'
   },
 
   renderDashboard: function() {
     var view = new App.Views.Dashboard({
       model: App.currUser
     });
+    this._swapView(view);
+  },
+
+  renderPlayerSearch: function() {
+    var view = new App.Views.PlayerSearch({
+      model: App.currUser
+    });
+
     this._swapView(view);
   },
 

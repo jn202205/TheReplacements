@@ -2,6 +2,10 @@ App.Views.Sidebar = Backbone.CompositeView.extend({
   template: JST['dashboard/sidebar'],
   className: 'sidebar-sports',
 
+  events: {
+    'click a.sport': 'playerSearch'
+  },
+
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.render);
   },
@@ -17,6 +21,13 @@ App.Views.Sidebar = Backbone.CompositeView.extend({
 
   addSportCards: function() {
     this.collection.each(this.addSportCard.bind(this));
+  },
+
+  playerSearch: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate('/player_search', {
+      trigger: true
+    });
   },
 
   render: function() {

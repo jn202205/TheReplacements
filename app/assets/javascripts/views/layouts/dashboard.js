@@ -5,12 +5,20 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   initialize: function() {},
 
   events: {
-    'click .add-sport': 'addEditSports'
+    'click .add-sport': 'addEditSports',
+    'click .add-game': 'playerSearch'
   },
 
   addEditSports: function(event) {
     event.preventDefault();
     Backbone.history.navigate('/sports_form', {
+      trigger: true
+    });
+  },
+
+  playerSearch: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate('/player_search', {
       trigger: true
     });
   },
