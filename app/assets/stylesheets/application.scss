@@ -275,6 +275,30 @@ ul {
         background-color: #8d2222;
         color: white;
       }
+      .col-xs-6 {
+        margin: 0;
+        border: 2px solid transparent;
+        label > input {
+          visibility: hidden;
+          position: absolute;
+        }
+        label {
+          cursor: pointer;
+          border: 3px solid transparent;
+        }
+        img {
+          padding: 3px;
+          border: 1px solid transparent;
+        }
+        img.selected {
+          border-radius: 3px;
+          border: 1px solid #8d2222;
+        }
+      }
+      .col-xs-6.selected {
+        border: 2px solid #8d2222;
+        border-radius: 3px;
+      }
     }
   }
 }
@@ -310,7 +334,7 @@ ul {
       visibility: hidden;
       position: absolute;
     }
-    label{
+    label {
       cursor: pointer;
       border: 3px solid transparent;
     }

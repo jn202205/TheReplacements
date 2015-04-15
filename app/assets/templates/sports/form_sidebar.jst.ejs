@@ -1,13 +1,14 @@
 <form id="sports_form" action="">
   <h3>Sports</h3>
   <p>Select all the sports you want to play</p>
-  <div class="form-group">
+  <div class="row">
     <% sports.each(function(sport) { %>
-      <div class="checkbox form-group">
-        <label>
+      <div class="checkbox col-xs-6">
+        <label class="sport">
           <% var checked = ((App.currUser.sports().findWhere({name: sport.get('name') }) != undefined) ? "checked" : "") %>
           <input type="checkbox" name="sport_ids[]" <%= checked %> value="<%= sport.id %>">
-          <%= sport.get('name') %>
+          <img src="/assets/<%= sport.get('name').toLowerCase() %>.gif" width="36" height="36" alt="<%= sport.get('name') %>">
+          <div><%= sport.get('name') %></div>
         </label>
       </div>
     <% }) %>
@@ -17,5 +18,5 @@
     <textarea class="form-control" id="experience" name="experience" placeholder="Describe your experience"><%= App.currUser.escape('experience') %></textarea>
   </div>
   <input type="hidden" id="playing-area" name="playing_area">
-    <button type="submit"  class="btn btn-default">Submit</button>
+  <button type="submit"  class="btn btn-default">Submit</button>
 </form>
