@@ -29,7 +29,8 @@ App.Views.SportForm = Backbone.CompositeView.extend({
       }
     });
     var view = new App.Views.SportsFormSidebar({
-      collection: this.sports
+      collection: this.sports,
+      model: App.currUser
     });
 
     this.addSubview('.form-container', view);
@@ -37,18 +38,22 @@ App.Views.SportForm = Backbone.CompositeView.extend({
 
   clearMap: function(event) {
     event.preventDefault();
-    if (this.overlay !== "") {
-      this.overlay.setMap(null);
+    if (this.selectedShape === this.overlay) {
+      this.overlay = "";
     }
-    this.overlay = "";
+    this.selectedShape.setMap(null);
+    this.drawingManager.setOptions({
+      drawingControl: true
+    });
   },
 
   displayMap: function() {
+    App.currUser.fetch();
     var view = new App.Views.GoogleMaps({
       model: App.currUser,
       parentView: this
     });
-    this.$('.gmap-container').append(view.$el);
+    //this.$('.gmap-container').append(view.$el);
     view.initializeMap();
     this.addSubview('.map-container', view);
   },

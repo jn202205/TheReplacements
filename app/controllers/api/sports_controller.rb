@@ -8,7 +8,7 @@ module Api
         @sports = Sport.all.sample(limit)
       elsif params[:current_user] == 'true'
         @sports = current_user.sports
-      elsif params[:all_sports] == 'true'
+      else
         @sports = Sport.all
       end
     end

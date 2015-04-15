@@ -1,8 +1,9 @@
-App.Views.SportsFormSidebar = Backbone.View.extend({
+App.Views.SportsFormSidebar = Backbone.CompositeView.extend({
   template: JST['sports/form_sidebar'],
   className: 'signup-form',
 
   initialize: function() {
+    this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.render);
   },
 
@@ -24,7 +25,7 @@ App.Views.SportsFormSidebar = Backbone.View.extend({
     var player = new App.Models.Player({
       id: App.currUser.id,
     });
-    player.set($(event.target).serializeJSON());
-    player.save();
+    player.save($(event.target).serializeJSON(), { wait: true });
+    Backbone.history.navigate('', { trigger: true });
   }
 });

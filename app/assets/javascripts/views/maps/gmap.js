@@ -5,6 +5,7 @@ App.Views.GoogleMaps = Backbone.View.extend({
 
   initialize: function(options) {
     this.parentView = options.parentView;
+    this.listenTo(this.model, 'sync', this.initializeMap);
   },
 
   // longitude: D, Latitude: k
@@ -33,13 +34,40 @@ App.Views.GoogleMaps = Backbone.View.extend({
       });
     }
 
+    this._setupDrawingManager();
+
+    if (this.model.get('playing_area')) {
+      this.polygon = new google.maps.Polygon({
+        paths: google.maps.geometry.encoding.decodePath(this.model.get('playing_area')),
+        editable: true,
+        strokeColor: "#8d2222",
+        strokeWeight: 3,
+        fillColor: "#8d2222"
+      });
+
+      this.polygon.setMap(this._map);
+      this.parentView.overlay = this.polygon;
+      this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+
+      google.maps.event.addListener(this.polygon, 'click', function() {
+        this.setSelection(this.polygon);
+      }.bind(this));
+
+      this.polygon.getPaths().forEach(function(path, index) {
+        google.maps.event.addListener(path, 'set_at', function() {
+          this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+        }.bind(this));
+      }.bind(this));
+
+      this.disableDrawingManager(this.drawingManager);
+    }
+
     function handleNoGeolocation(errorFlag) {
       alert("Geolocation service failed.");
       var location = sf;
       map.setCenter(location);
     }
 
-    this._setupDrawingManager();
 
     this.attachMapListeners();
 
@@ -49,7 +77,7 @@ App.Views.GoogleMaps = Backbone.View.extend({
   },
 
   _setupDrawingManager: function() {
-    var drawingManager = new google.maps.drawing.DrawingManager({
+    this.drawingManager = new google.maps.drawing.DrawingManager({
       drawingMode: google.maps.drawing.OverlayType.POLYGON,
       drawingControl: true,
       drawingControlOptions: {
@@ -66,15 +94,45 @@ App.Views.GoogleMaps = Backbone.View.extend({
       }
     });
 
-    drawingManager.setMap(this._map);
+    this.drawingManager.setMap(this._map);
 
-    google.maps.event.addListener(drawingManager, "overlaycomplete", function(event) {
-      var overlayCoords = event.overlay.getPath();
-      this.parentView.overlay = event.overlay;
-      //TODO store this polygon in a string column in user table
-      this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(overlayCoords));
+    google.maps.event.addListener(this.drawingManager, "overlaycomplete", function(event) {
+      this.polygon = event.overlay;
+      this.parentView.overlay = this.polygon;
+      this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+
+      this.disableDrawingManager(this.drawingManager);
+
+      this.parentView.drawingManager = this.drawingManager;
+      google.maps.event.addListener(this.polygon, 'click', function() {
+        this.setSelection(this.polygon);
+      });
+
+      this.polygon.getPaths().forEach(function(path, index) {
+        google.maps.event.addListener(path, 'set_at', function() {
+          this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+        }.bind(this));
+      }.bind(this));
+
+      this.setSelection(this.polygon);
+
     }.bind(this));
+
+    this.parentView.drawingManager = this.drawingManager;
   },
+
+  disableDrawingManager: function(dm) {
+    dm.setDrawingMode(null);
+    dm.setOptions({
+      drawingControl: false,
+    });
+  },
+
+  setSelection: function(shape) {
+    this.parentView.selectedShape = shape;
+    shape.setEditable(true);
+  },
+
 
   attachMapListeners: function() {},
 

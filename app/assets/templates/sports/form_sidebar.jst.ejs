@@ -5,7 +5,8 @@
     <% sports.each(function(sport) { %>
       <div class="checkbox form-group">
         <label>
-          <input type="checkbox" name="sport_ids[]" value="<%= sport.id %>">
+          <% var checked = ((App.currUser.sports().findWhere({name: sport.get('name') }) != undefined) ? "checked" : "") %>
+          <input type="checkbox" name="sport_ids[]" <%= checked %> value="<%= sport.id %>">
           <%= sport.get('name') %>
         </label>
       </div>
@@ -13,7 +14,7 @@
   </div>
   <div class="form-group">
     <label for="experience">Experience</label>
-    <textarea class="form-control" id="experience" name="experience" placeholder="Describe your experience"></textarea>
+    <textarea class="form-control" id="experience" name="experience" placeholder="Describe your experience"><%= App.currUser.escape('experience') %></textarea>
   </div>
   <input type="hidden" id="playing-area" name="playing_area">
     <button type="submit"  class="btn btn-default">Submit</button>
