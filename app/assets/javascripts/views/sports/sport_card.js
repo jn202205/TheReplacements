@@ -1,6 +1,5 @@
 App.Views.SportCard = Backbone.View.extend({
   template: JST['sports/sport_card'],
-  className: "col-xs-6",
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);

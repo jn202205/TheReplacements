@@ -12,6 +12,7 @@ App.Views.Sidebar = Backbone.CompositeView.extend({
 
   addSportCard: function(sport) {
     var view = new App.Views.SportCard({
+      className: 'col-xs-6',
       collection: this.collection,
       model: sport
     });
