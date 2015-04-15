@@ -13,11 +13,12 @@ recreational sports team. Users can:
 
 - [x] Create accounts
 - [x] Create sessions (log in)
+- [x] Register as a player
+- [x] draw playing area on map in player registration
 - [ ] Search for players
 - [ ] Location based results
 - [ ] Pick players/schedule pairings(task)
 - [ ] Rate players after game
-- [ ] Register as a player
 - [ ] Show player's scheduled games
 - [ ] Rate teams after game
 
@@ -118,7 +119,6 @@ permanently.
 
 ### Phase 8: Bonus Features (TBD)
 
-- [ ] draw playing area on map in player registration
 - [ ] Player history - wins/losses, games played
 - [ ] Payment system
 - [ ] Admin page
