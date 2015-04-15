@@ -57,6 +57,9 @@ App.Views.GoogleMaps = Backbone.View.extend({
         google.maps.event.addListener(path, 'set_at', function() {
           this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
         }.bind(this));
+        google.maps.event.addListener(path, 'insert_at', function() {
+          this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+        }.bind(this));
       }.bind(this));
 
       this.disableDrawingManager(this.drawingManager);
@@ -110,6 +113,9 @@ App.Views.GoogleMaps = Backbone.View.extend({
 
       this.polygon.getPaths().forEach(function(path, index) {
         google.maps.event.addListener(path, 'set_at', function() {
+          this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+        }.bind(this));
+        google.maps.event.addListener(path, 'insert_at', function() {
           this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
         }.bind(this));
       }.bind(this));
