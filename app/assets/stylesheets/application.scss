@@ -291,6 +291,36 @@ ul {
   }
 }
 
+/* USER SEARCH */
+#search-form {
+  ul {
+    list-style-type: none;
+  }
+  .criteria {
+    margin-top: 20px;
+    .row {
+      background-color: white;
+      .thumbnail {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .sport-select {
+    label > input {
+      visibility: hidden;
+      position: absolute;
+    }
+    label{
+      cursor: pointer;
+      border: 3px solid transparent;
+    }
+    .col-xs-2.selected {
+      border: 3px solid #8d2222;
+      border-radius: 3px;
+    }
+  }
+}
+
 /* User auth */
 .user-auth {
   padding: 48px 5%;

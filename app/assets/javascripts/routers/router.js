@@ -17,8 +17,11 @@ App.Routers.Router = Backbone.Router.extend({
   },
 
   renderPlayerSearch: function() {
+    var sports = new App.Collections.Sports();
+    sports.fetch();
     var view = new App.Views.PlayerSearch({
-      model: App.currUser
+      model: App.currUser,
+      collection: sports
     });
 
     this._swapView(view);
