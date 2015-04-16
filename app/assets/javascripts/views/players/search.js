@@ -38,9 +38,15 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
     $(function() {
       $('#datetimepicker1').datetimepicker({
         sideBySide: true,
+        inline: true,
       });
       $('#datetimepicker1').data("DateTimePicker").minDate(moment());
     });
+
+    $("#datetimepicker1").on("dp.change", function(event) {
+      var date = event.date.toDate();
+      this.$('input#date').val(date);
+    }.bind(this));
   },
 
   renderHeader: function() {
