@@ -15,6 +15,8 @@
 //= require jquery.scrollTo.min
 //= require jquery.serializejson
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
 //= require underscore
 //= require backbone
 //= require app
