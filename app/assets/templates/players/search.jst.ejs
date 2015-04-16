@@ -3,39 +3,55 @@
 <section id="search-form" class="container">
   <div class="row">
     <div class="sections col-xs-12">
-      <div class="sport-select">
-      </div>
-      <div class="location">
-        <div class="criteria">
-          <h3>Where is your game?</h3>
-          <div class="row">
-            <input type="text" 
-                   class="form-control"
-                   id="searchTextField"
-                   placeholder="ex. 'Jackson Playground' or 'Ocean Ave and San Jose Avenue'">
+      <form action="">
+        <div class="sport-select">
+        </div>
+        <div class="location">
+          <div class="criteria">
+            <h3>Where is your game?</h3>
+            <div class="row">
+              <input type="text"
+                     class="form-control"
+                     id="searchTextField"
+                     placeholder="ex. 'Jackson Playground' or 'Ocean Ave and San Jose Avenue'">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="date_time">
-        <div class="criteria">
-          <h3>When does it start?</h3>
-          <div class="row">
-            <div class='col-xs-12'>
-              <div class="form-group">
-                <div class="row">
-                  <div class='input-group date' id='datetimepicker1'>
-                    <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                    <input type='text' class="form-control" />
+        <div class="date_time">
+          <div class="criteria">
+            <h3>When does it start?</h3>
+            <div class="row">
+              <div class='col-sm-12'>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class='input-group date' id='datetimepicker1'>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div> <!-- end date_time -->
-      <button type="submit" class="btn btn-default col-xs-offset-3 col-xs-6">Find Players</button>
+        </div> <!-- end date_time -->
+        <div class="details">
+          <div class="criteria">
+            <h3>Extra details</h3>
+            <div class="row">
+              <div class='col-xs-12'>
+                <div class="form-group">
+                  <div class="row">
+                    <textarea class="form-control" id="" name="details" placeholder="skill level, equipment needed, etc. "></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end date_time -->
+        <input id="date" type="hidden" name="date">
+        <input id="location" type="hidden" name="location" >
+        <button type="submit" class="btn btn-default col-xs-offset-3 col-xs-6">Find Players</button>
+      </form>
     </div>
   </div>
 </section>
