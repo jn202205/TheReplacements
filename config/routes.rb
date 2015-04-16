@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:index, :show, :update], path: '/players'
     resources :sports, only: [:index, :show]
+    resources :games, only: [:index, :show, :create]
   end
 end

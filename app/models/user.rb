@@ -14,6 +14,9 @@
 #  elite           :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  img_url         :string
+#  playing_area    :string
+#  experience      :text
 #
 
 class User < ActiveRecord::Base
@@ -21,4 +24,5 @@ class User < ActiveRecord::Base
 
   has_many :player_sports, foreign_key: :player_id, dependent: :destroy
   has_many :sports, through: :player_sports, source: :sport
+  has_many :games
 end
