@@ -38,10 +38,15 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
 
   search: function(event) {
     event.preventDefault();
-    // TODO: Save the game
+    var data = $(event.target).serializeJSON();
     var game = new App.Models.Game();
-    game.save($(event.target).serializeJSON(), { wait: true });
-    // TODO render the search results page
+    game.save(data, {
+      wait: true
+    });
+    var search_params = '' + data.sport_id + '/' + data.lat + '/' + data.lng;
+    Backbone.history.navigate('player_results/' + search_params, {
+      trigger: true
+    });
   },
 
   render: function() {
