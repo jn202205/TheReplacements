@@ -19,7 +19,7 @@ module Api
     end
 
     def update
-      @user = User.find(params[:id])
+      @user = current_user
       if @user.update(player_params)
         render json: @user
       else
