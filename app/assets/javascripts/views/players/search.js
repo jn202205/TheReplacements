@@ -24,7 +24,8 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
       }
       var place = places[0];
       this.position = place.geometry.location;
-      this.$('#location').val(this.position);
+      this.$('#lat').val(this.position.lat());
+      this.$('#lng').val(this.position.lng());
     }.bind(this));
 
     google.maps.event.addDomListener(document.getElementById("searchTextField"), 'blur', function() {
