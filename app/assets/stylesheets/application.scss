@@ -347,6 +347,21 @@ ul {
       border-radius: 3px;
     }
   }
+  .btn.btn-default {
+    background-color: #8d2222;
+    color: white;
+    border: 1px solid #8d2222;
+    font-weight: 500;
+    box-shadow: 2px 2px 5px black;
+    position: relative;
+    top: -2px;
+  }
+  .btn.btn-default:active {
+    position: relative;
+    top: 0px;
+    background-color: #8d2222;
+    color: white;
+  }
 }
 
 /* User auth */

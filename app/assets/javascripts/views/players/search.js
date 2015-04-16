@@ -15,15 +15,11 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
-
       if (places.length === 0) {
         return;
       }
-
       var place = places[0];
-      //this is the position to check if its within a players playing area
       var position = place.geometry.location;
-
       console.log(position);
     });
   },
