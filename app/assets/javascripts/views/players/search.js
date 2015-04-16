@@ -18,14 +18,28 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
     var location = searchBox.getPlaces();
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
+      console.log('fired places_changed event');
       var places = searchBox.getPlaces();
       if (places.length === 0) {
         return;
       }
       var place = places[0];
-      var position = place.geometry.location;
-      console.log(position);
+      this.position = place.geometry.location;
+      this.$('#location').val(this.position);
+    }.bind(this));
+
+    google.maps.event.addDomListener(document.getElementById("searchTextField"), 'blur', function() {
+      google.maps.event.trigger(this, 'focus');
+      google.maps.event.trigger(this, 'keydown', {
+        keyCode: 13
+      });
     });
+  },
+
+  search: function(event) {
+    event.preventDefault();
+
+    console.log(this.$('form').serializeJSON());
   },
 
   render: function() {
