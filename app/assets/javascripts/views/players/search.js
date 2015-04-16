@@ -2,6 +2,10 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
   template: JST['players/search'],
   className: 'static-homepage',
 
+  events: {
+    "click button[type=submit]": "search"
+  },
+
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.render);
