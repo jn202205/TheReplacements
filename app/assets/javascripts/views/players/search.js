@@ -18,7 +18,6 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
     var location = searchBox.getPlaces();
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
-      console.log('fired places_changed event');
       var places = searchBox.getPlaces();
       if (places.length === 0) {
         return;
@@ -38,8 +37,10 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
 
   search: function(event) {
     event.preventDefault();
-
-    console.log(this.$('form').serializeJSON());
+    // TODO: Save the game
+    // var game = new App.Models.Game();
+    // game.save($(event.target).serializeJSON(), { wait: true });
+    // TODO render the search results page
   },
 
   render: function() {
