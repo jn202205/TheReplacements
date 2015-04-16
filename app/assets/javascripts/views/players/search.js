@@ -34,8 +34,17 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
     this.renderHeader();
     this.renderSportSelector();
     this.addPlacesSearch();
-
+    this.addDatePicker();
     return this;
+  },
+
+  addDatePicker: function() {
+    $(function() {
+      $('#datetimepicker1').datetimepicker({
+        sideBySide: true,
+      });
+      $('#datetimepicker1').data("DateTimePicker").minDate(moment());
+    });
   },
 
   renderHeader: function() {
@@ -51,6 +60,6 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
       collection: this.collection
     });
 
-    this.addSubview('.sections', view);
+    this.addSubview('.sport-select', view);
   }
 });

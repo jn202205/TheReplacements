@@ -1,16 +1,16 @@
 App.Views.SportSelector = Backbone.CompositeView.extend({
   template: JST['sports/sport_selector'],
-  className: 'sport-select',
+  className: 'criteria',
   events: {
     'click label.sport': 'selectSport'
   },
 
   selectSport: function(event) {
     if(this.selectedSport) {
-      this.selectedSport.parent('.col-xs-2').removeClass('selected');
+      this.selectedSport.parent('.sport-btn').removeClass('selected');
     }
     this.selectedSport = $(event.currentTarget);
-    this.selectedSport.parent('.col-xs-2').addClass('selected');
+    this.selectedSport.parent('.sport-btn').addClass('selected');
   },
 
   initialize: function() {
@@ -33,7 +33,7 @@ App.Views.SportSelector = Backbone.CompositeView.extend({
 
   addSportButton: function(sport) {
     var view = new App.Views.SportButton({
-      className: 'col-xs-2',
+      className: 'sport-btn col-sm-2 col-xs-4',
       collection: this.collection,
       model: sport
     });

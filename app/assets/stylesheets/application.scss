@@ -16,6 +16,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-datetimepicker";
 @import "font-awesome";
 
 * {
@@ -127,7 +128,7 @@ ul {
   // section on landing page showing sports
   .sports {
     text-align: center;
-    padding: 2% 0;
+    padding: 0;
     background-color: #EDEFF1;
     .container {
       padding: 0 5%;
@@ -338,10 +339,10 @@ ul {
       cursor: pointer;
       border: 3px solid transparent;
     }
-    .col-xs-2 {
+    .sport-btn {
       border: 3px solid transparent;
     }
-    .col-xs-2.selected {
+    .sport-btn.selected {
       border: 3px solid #8d2222;
       border-radius: 3px;
     }
@@ -410,4 +411,17 @@ ul {
 .form-control:focus {
   border-color: #8d2222;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(189, 31, 37, 0.6);
+}
+
+.bootstrap-datetimepicker-widget {
+  td.today:before {
+    border-bottom: 7px solid #8d2222;
+  }
+  td.active, td.active:hover {
+    background-color: #8d2222;
+  }
+  .btn-primary {
+    background-color: #8d2222;
+    border-color: #8d2222;
+  }
 }
