@@ -5,24 +5,21 @@ module Api
 
     def index
       @games = Game.all
-      render @games
     end
 
     def show
       @game = Game.find(params[:id])
-      render json: @game
     end
 
     def create
       @game = current_user.games.new(game_params)
 
       if @game.save
-        render :show, status: :created, location: @game
+        render json: @game
       else
         render json: @game.errors, status: :unprocessable_entity
       end
     end
-
 
     private
     def game_params
