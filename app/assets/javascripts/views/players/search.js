@@ -64,8 +64,8 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
     });
 
     $("#datetimepicker1").on("dp.change", function(event) {
-      var date = event.date.toDate();
-      this.$('input#date').val(date);
+      var epoch_seconds = event.date.unix();
+      this.$('input#date').val(epoch_seconds);
     }.bind(this));
   },
 
