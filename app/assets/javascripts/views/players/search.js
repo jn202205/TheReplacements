@@ -3,7 +3,7 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
   className: 'static-homepage',
 
   events: {
-    "click button[type=submit]": "search"
+    "submit": "search"
   },
 
   initialize: function() {
@@ -39,8 +39,8 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
   search: function(event) {
     event.preventDefault();
     // TODO: Save the game
-    // var game = new App.Models.Game();
-    // game.save($(event.target).serializeJSON(), { wait: true });
+    var game = new App.Models.Game();
+    game.save($(event.target).serializeJSON(), { wait: true });
     // TODO render the search results page
   },
 
