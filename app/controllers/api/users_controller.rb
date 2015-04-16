@@ -9,6 +9,8 @@ module Api
         @users = User.where(zipcode: current_user.zipcode)
                      .where.not(id: current_user.id)
                      .sample(limit)
+      elsif params[:sport_id]
+        @users = User.search(params[:sport_id])
       else
         @users = User.all
       end
@@ -31,6 +33,5 @@ module Api
     def player_params
       params.require(:user).permit(:playing_area, :experience, sport_ids: [])
     end
-
   end
 end

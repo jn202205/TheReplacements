@@ -25,4 +25,9 @@ class User < ActiveRecord::Base
   has_many :player_sports, foreign_key: :player_id, dependent: :destroy
   has_many :sports, through: :player_sports, source: :sport
   has_many :games
+
+  def self.search(search)
+    sport_id = search
+    joins(:sports).where(sports: { id: search })
+  end
 end
