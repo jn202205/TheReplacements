@@ -13,6 +13,7 @@ App.Views.PlayerProfile = Backbone.CompositeView.extend({
     this.$el.html(content);
 
     this.renderProfileHead();
+    this.renderPlayerSports();
   },
 
   renderProfileHead: function() {
@@ -21,5 +22,15 @@ App.Views.PlayerProfile = Backbone.CompositeView.extend({
     });
 
     this.addSubview('.dashboard-head', view);
+  },
+
+  renderPlayerSports: function() {
+    var userSports = this.model.sports();
+
+    var view = new App.Views.UserSports({
+      collection: userSports
+    });
+
+    this.addSubview('.your-sports', view);
   }
 });
