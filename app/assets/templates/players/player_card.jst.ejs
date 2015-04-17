@@ -4,7 +4,7 @@
     <div class="caption">
       <h3><%= player.escape('fname') %></h3>
       <ul>
-        <% player.sports().each(function(sport) { %>
+        <% _.each(player.sports().sample(3), function(sport) { %>
           <li><%= sport.get('name') %></li>
         <% }) %>
       </ul>
