@@ -28,6 +28,6 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     sport_id = search
-    joins(:sports).where(sports: { id: search })
+    includes(:sports).where(sports: { id: search })
   end
 end

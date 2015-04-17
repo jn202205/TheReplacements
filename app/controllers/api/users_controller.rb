@@ -6,13 +6,13 @@ module Api
     def index
       limit = params[:limit].to_i
       if limit > 0
-        @users = User.where(zipcode: current_user.zipcode)
+        @users = User.includes(:sports).where(zipcode: current_user.zipcode)
                      .where.not(id: current_user.id)
                      .sample(limit)
       elsif params[:sport_id]
-        @users = User.search(params[:sport_id])
+        @users = User.includes(:sports).search(params[:sport_id])
       else
-        @users = User.all
+        @users = User.includes(:sports)
       end
     end
 
