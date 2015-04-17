@@ -59,9 +59,8 @@ App.Routers.Router = Backbone.Router.extend({
   },
 
   _swapView: function(view) {
-    if (this.currentView) {
-      this.currentView.remove();
-    }
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
     this.$rootEl.html(view.$el);
     view.render();
   }
