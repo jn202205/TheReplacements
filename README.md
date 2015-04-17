@@ -15,8 +15,8 @@ recreational sports team. Users can:
 - [x] Create sessions (log in)
 - [x] Register as a player
 - [x] draw playing area on map in player registration
-- [ ] Search for players
-- [ ] Location based results
+- [x] Search for players
+- [x] Location based results
 - [ ] Pick players/schedule pairings(task)
 - [ ] Rate players after game
 - [ ] Show player's scheduled games
