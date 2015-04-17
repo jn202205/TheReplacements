@@ -10,7 +10,7 @@ module Api
                      .where.not(id: current_user.id)
                      .sample(limit)
       elsif params[:sport_id]
-        @users = User.includes(:sports).where.not(id: current_user.id).search(params[:sport_id])
+        @users = User.where.not(id: current_user.id).includes(:sports).search(params[:sport_id])
       else
         @users = User.includes(:sports)
       end

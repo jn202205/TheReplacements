@@ -26,8 +26,11 @@ class User < ActiveRecord::Base
   has_many :sports, through: :player_sports, source: :sport
   has_many :games
 
-  def self.search(search)
-    sport_id = search
-    includes(:sports).where(sports: { id: search })
+  def self.search(sport_id)
+    subquery = User.joins("JOIN player_sports ON player_sports.player_id = users.id")
+      .joins("JOIN sports ON player_sports.sport_id = sports.id")
+      .where("sports.id = ?", sport_id)
+
+    self.from(subquery, :users).includes(:sports)
   end
 end
