@@ -29,7 +29,7 @@ App.Views.PlayerResultsView = Backbone.CompositeView.extend({
   },
 
   renderPlayers: function() {
-    this.collection.each(function(player) {
+    _.each(this.collection.shuffle(), function(player) {
       if (player.get('playing_area')) {
         var playingArea = new google.maps.Polygon({
           paths: google.maps.geometry.encoding.decodePath(player.get('playing_area'))
