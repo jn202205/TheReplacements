@@ -53,7 +53,6 @@ App.Views.SportForm = Backbone.CompositeView.extend({
       model: App.currUser,
       parentView: this
     });
-    //this.$('.gmap-container').append(view.$el);
     view.initializeMap();
     this.addSubview('.map-container', view);
   },

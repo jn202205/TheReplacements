@@ -7,6 +7,11 @@ App.Views.SportsFormSidebar = Backbone.CompositeView.extend({
     'click label.sport': 'selectSport'
   },
 
+  initialize: function() {
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.collection, 'sync', this.render);
+  },
+
   selectSport: function(event) {
     var selectedSport = $(event.currentTarget);
     if ($(event.target).is(':checked')) {
@@ -22,11 +27,6 @@ App.Views.SportsFormSidebar = Backbone.CompositeView.extend({
         $(sport).siblings('img').addClass('selected');
       }
     });
-  },
-
-  initialize: function() {
-    this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.collection, 'sync', this.render);
   },
 
   render: function() {
