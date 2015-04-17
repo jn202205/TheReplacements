@@ -17,6 +17,7 @@
     <label for="experience">Experience</label>
     <textarea class="form-control" id="experience" name="experience" placeholder="Describe your experience"><%= App.currUser.escape('experience') %></textarea>
   </div>
+  <input type="hidden" name="sport_ids[]" value="">
   <input type="hidden" id="playing-area" name="playing_area">
   <button type="submit"  class="btn btn-default">Submit</button>
 </form>
