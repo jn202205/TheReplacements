@@ -29,7 +29,7 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
     this.renderHeader();
     this.renderUserSports();
     this.renderAreaPlayers();
-    this.renderSidebar();
+    // this.renderSidebar();
     return this;
   },
 

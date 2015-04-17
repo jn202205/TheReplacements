@@ -191,6 +191,13 @@ ul {
           border: 1px solid #ddd;
           border-radius: 4px;
           margin-bottom: 10px;
+          a.btn.btn-default {
+            position: relative;
+            top: 16px;
+          }
+          a.btn.btn-default:active {
+            top: 18px;
+          }
         }
       }
       .player-card {
@@ -333,6 +340,9 @@ ul {
   .sport-select {
     label > input {
       visibility: hidden;
+      position: absolute;
+    }
+    .sport > input.btn {
       position: absolute;
     }
     label {
