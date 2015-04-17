@@ -19,6 +19,8 @@ gem 'rails_12factor'
 gem 'figaro'
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'seed_dump'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
