@@ -44,6 +44,7 @@ women.each_with_index do |name, index|
   password = 'password'
   zipcode = index.even? ? '94109' : '95109'
   elite = index % 5 == 0 ? true : false
+  playing_area = index % 2 == 0 ? "kkteF||qjVqwCyyPfkPy{DpwB`dZmzGt`H" : "a`ccFhmehVcrRq{e@lfc@uec@dgFhwhA"
 
   user = User.new(
     fname: fname,
@@ -53,6 +54,7 @@ women.each_with_index do |name, index|
     zipcode: zipcode,
     elite: elite,
     img_url: "https://randomuser.me/api/portraits/med/women/#{index}.jpg"
+    playing_area: playing_area
   )
   print user.save ? 'U ' : 'Fu '
 
@@ -67,6 +69,7 @@ men.each_with_index do |name, index|
   password = 'password'
   zipcode = index.even? ? '94109' : '95109'
   elite = index % 5 == 0 ? true : false
+  playing_area = index % 2 == 0 ? "kkteF||qjVqwCyyPfkPy{DpwB`dZmzGt`H" : "a`ccFhmehVcrRq{e@lfc@uec@dgFhwhA"
 
   user = User.new(
     fname: fname,
@@ -76,6 +79,7 @@ men.each_with_index do |name, index|
     zipcode: zipcode,
     elite: elite,
     img_url: "https://randomuser.me/api/portraits/med/men/#{index}.jpg"
+    playing_area: playing_area
   )
   print user.save ? 'U ' : 'Fu '
 
