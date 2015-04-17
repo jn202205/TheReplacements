@@ -191,7 +191,7 @@ puts '*' * 80
 
 #Generate player_sports
 User.all.each do |user|
-  sport_num = user.id.even? ? 3 : 2
+  sport_num = user.id.even? ? 3 : 4
   sport_num.times do
     player_sport = PlayerSport.new(
       player_id: user.id,
