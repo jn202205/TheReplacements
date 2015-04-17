@@ -5,11 +5,14 @@ App.Views.PlayerResultsView = Backbone.CompositeView.extend({
   initialize: function(opts) {
     this.eventLoc = new google.maps.LatLng(opts.lat, opts.lng);
     this.listenTo(this.collection, 'sync', this.render);
-    this.listenTo(this.model, 'sync', this.render)
+    this.listenTo(this.model, 'sync', this.render);
+    this.sport = opts.sport;
   },
 
   render: function() {
-    var content = this.template();
+    var content = this.template({
+      sport: this.sport
+    });
     this.$el.html(content);
     this.renderHeader();
     this.renderPlayers();

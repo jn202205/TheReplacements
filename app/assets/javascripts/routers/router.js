@@ -18,18 +18,20 @@ App.Routers.Router = Backbone.Router.extend({
   },
 
   renderPlayerResults: function(id, lat, lng) {
+    var sport = new App.Models.Sport({id: id});
+    sport.fetch();
     var playerResults = new App.Collections.Players();
     playerResults.fetch({
       data: {
         sport_id: id
       }
     });
-
     var view = new App.Views.PlayerResultsView({
       model: App.currUser,
       collection: playerResults,
       lat: lat,
-      lng: lng
+      lng: lng,
+      sport: sport
     });
 
     this._swapView(view);
