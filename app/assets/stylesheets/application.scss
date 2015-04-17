@@ -311,6 +311,25 @@ ul {
   }
 }
 
+/* player profile */
+.profile-head {
+  text-align: center;
+  img.profile-avatar {
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 5px solid #8d2222;
+  }
+  .elite-tag {
+    background: white;
+    border: 1px solid;
+    border-radius: 25px;
+    font-size: 25px;
+    padding: 5px 10px;
+    top: -15px;
+    position: relative;
+  }
+}
+
 /* Sports signup form */
 .map-container {
   height: 400px;

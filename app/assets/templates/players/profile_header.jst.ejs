@@ -1,0 +1,20 @@
+<div class="btn-group" role="group" aria-label="..."> 
+  <a href="" class="dashboard btn btn-default">Dashboard</a>
+  <a href="#account" class="btn btn-default">Account</a>
+  <a href="/session" class="btn btn-default" rel="nofollow" data-method="delete">Sign out</a>
+</div>
+<div class="clearfix">
+  <div class="profile-head row">
+    <div class="col-sm-12">
+      <img class="profile-avatar" src="<%= player.escape('img_url') %>" alt="">
+    </div>
+    <% if (player.get('elite')) { %>
+      <div class="col-sm-12">
+        <span class="elite-tag">
+          <i class="fa fa-star"></i> Elite <i class="fa fa-star"></i>
+        </span>
+      </div>
+    <% } %>
+    <h1 class="col-sm-12"><%= player.escape('fname') + " " + player.escape('lname') %></h1>
+  </div>
+</div>

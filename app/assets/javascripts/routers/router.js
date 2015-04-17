@@ -7,7 +7,18 @@ App.Routers.Router = Backbone.Router.extend({
     "": 'renderDashboard',
     "sports_form": 'renderSportForm',
     "player_search": 'renderPlayerSearch',
-    "player_results/:id/:lat/:lng": 'renderPlayerResults'
+    "player_results/:id/:lat/:lng": 'renderPlayerResults',
+    "player/:id": 'renderPlayerProfile'
+  },
+
+  renderPlayerProfile: function(id) {
+    var user = new App.Models.Player({id: id});
+    user.fetch();
+    var view = new App.Views.PlayerProfile({
+      model: user
+    });
+
+    this._swapView(view);
   },
 
   renderDashboard: function() {
