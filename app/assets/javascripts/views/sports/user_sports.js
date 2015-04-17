@@ -2,7 +2,8 @@ App.Views.UserSports = Backbone.CompositeView.extend({
   template: JST['sports/user_sports'],
   className: 'user-sports',
 
-  initialize: function() {
+  initialize: function(opts) {
+    this.isProfile = opts.isProfile;
     this.listenTo(this.collection, 'sync', this.render);
   },
 
@@ -17,7 +18,8 @@ App.Views.UserSports = Backbone.CompositeView.extend({
 
   addSport: function(sport) {
     var view = new App.Views.SportListing({
-      model: sport
+      model: sport,
+      isProfile: this.isProfile
     });
 
     this.addSubview('.sport-listings', view);

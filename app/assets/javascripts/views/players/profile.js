@@ -28,6 +28,7 @@ App.Views.PlayerProfile = Backbone.CompositeView.extend({
     var userSports = this.model.sports();
 
     var view = new App.Views.UserSports({
+      isProfile: true,
       collection: userSports
     });
 

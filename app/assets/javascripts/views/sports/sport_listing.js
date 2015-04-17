@@ -7,7 +7,8 @@ App.Views.SportListing = Backbone.CompositeView.extend({
     'click a.btn': 'playerSearch'
   },
 
-  initialize: function() {
+  initialize: function(opts) {
+    this.isProfile = opts.isProfile;
     this.listenTo(this.model, 'sync', this.render);
   },
 
@@ -20,7 +21,8 @@ App.Views.SportListing = Backbone.CompositeView.extend({
 
   render: function() {
     var content = this.template({
-      sport: this.model
+      sport: this.model,
+      profile: this.isProfile
     });
     this.$el.html(content);
 
