@@ -38,10 +38,8 @@ App.Views.SportForm = Backbone.CompositeView.extend({
 
   clearMap: function(event) {
     event.preventDefault();
-    if (this.selectedShape === this.overlay) {
-      this.overlay = "";
-    }
-    this.selectedShape.setMap(null);
+    this.overlay.setMap(null);
+    this.overlay = "";
     this.$('#playing-area').val("");
     this.drawingManager.setOptions({
       drawingControl: true

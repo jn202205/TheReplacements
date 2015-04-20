@@ -54,9 +54,9 @@ App.Views.GoogleMaps = Backbone.View.extend({
 
         // add event listeners
         // listener for selecting polygon
-        google.maps.event.addListener(this.polygon, 'click', function() {
-          this.setSelection(this.polygon);
-        }.bind(this));
+        // google.maps.event.addListener(this.polygon, 'click', function() {
+        //   this.setSelection(this.polygon);
+        // }.bind(this));
 
         // listener for editing polygon
         this.polygon.getPaths().forEach(function(path, index) {
