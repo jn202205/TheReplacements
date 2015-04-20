@@ -8,69 +8,86 @@ App.Views.GoogleMaps = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.initializeMap);
   },
 
-  // longitude: D, Latitude: k
   initializeMap: function() {
-
+    var sf = new google.maps.LatLng(37.775270, -122.419498);
     var mapOptions = {
-      center: {
-        lat: 37.7833,
-        lng: -122.4167
-      },
-      zoom: 13
+      center: sf,
+      zoom: 12
     };
-
-    var sf = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-    var browserSupportFlag;
-
     this._map = new google.maps.Map(this.el, mapOptions);
-
-    if (navigator.geolocation) {
-      browserSupportFlag = true;
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        this._map.setCenter(initialLocation);
-      }.bind(this), function() {
-        handleNoGeolocation(browserSupportFlag);
-      });
-    }
 
     this._setupDrawingManager();
 
-    if (this.model.get('playing_area')) {
-      this.polygon = new google.maps.Polygon({
-        paths: google.maps.geometry.encoding.decodePath(this.model.get('playing_area')),
-        editable: true,
-        strokeColor: "#8d2222",
-        strokeWeight: 3,
-        fillColor: "#8d2222"
-      });
+    //if there is only one key on the model, no info has come back yet
+    //therefore playing area is always going to be undefined and map will 
+    //always center on current location now polygon
+    if (this.model.keys().length > 1) {
+      var browserSupportFlag;
+      var polygon = this.model.get('playing_area');
+      var playing_area = (this.model.get('playing_area'));
 
-      this.polygon.setMap(this._map);
-      this.parentView.overlay = this.polygon;
-      this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+      if (playing_area) {
+        // find center of playing area
+        var bounds = new google.maps.LatLngBounds();
+        var i;
+        playingAreaPaths = google.maps.geometry.encoding.decodePath(this.model.get('playing_area'));
+        for (i = 0; i < playingAreaPaths.length; i++) {
+          bounds.extend(playingAreaPaths[i]);
+        }
 
-      google.maps.event.addListener(this.polygon, 'click', function() {
-        this.setSelection(this.polygon);
-      }.bind(this));
+        //redraw playing area
+        var map = this._map;
+        this.polygon = new google.maps.Polygon({
+          paths: playingAreaPaths,
+          map: map,
+          editable: true,
+          strokeColor: "#8d2222",
+          strokeWeight: 3,
+          fillColor: "#8d2222"
+        });
 
-      this.polygon.getPaths().forEach(function(path, index) {
-        google.maps.event.addListener(path, 'set_at', function() {
-          this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+        this._map.setCenter(bounds.getCenter());
+
+        // pass reference of playing area to parent view
+        this.parentView.overlay = this.polygon;
+        this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+
+        // add event listeners
+        // listener for selecting polygon
+        google.maps.event.addListener(this.polygon, 'click', function() {
+          this.setSelection(this.polygon);
         }.bind(this));
-        google.maps.event.addListener(path, 'insert_at', function() {
-          this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
-        }.bind(this));
-      }.bind(this));
 
-      this.disableDrawingManager(this.drawingManager);
+        // listener for editing polygon
+        this.polygon.getPaths().forEach(function(path, index) {
+          google.maps.event.addListener(path, 'set_at', function() {
+            this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+          }.bind(this));
+          google.maps.event.addListener(path, 'insert_at', function() {
+            this.parentView.$('#playing-area').val(google.maps.geometry.encoding.encodePath(this.polygon.getPath()));
+          }.bind(this));
+        }.bind(this));
+
+        // disable drawing manager when polygon is already drawn
+        this.disableDrawingManager(this.drawingManager);
+      } else {
+        browserSupportFlag = true;
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          this._map.setCenter(initialLocation);
+        }.bind(this), function() {
+          handleNoGeolocation(browserSupportFlag);
+        });
+      }
     }
-
+    // if browser doesn't support location or user denies access to location
+    // set map center to sf
     function handleNoGeolocation(errorFlag) {
-      alert("Geolocation service failed.");
-      var location = sf;
-      map.setCenter(location);
+      if (!browserSupportFlag) {
+        alert("Geolocation service failed.");
+        map.setCenter(sf);
+      }
     }
-
 
     this.attachMapListeners();
 
