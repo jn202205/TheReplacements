@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421033853) do
+ActiveRecord::Schema.define(version: 20150421064252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,14 +26,21 @@ ActiveRecord::Schema.define(version: 20150421033853) do
     t.boolean  "complete",      default: false, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.integer  "player_id"
   end
 
   add_index "games", ["game_datetime"], name: "index_games_on_game_datetime", using: :btree
   add_index "games", ["lat", "lng"], name: "index_games_on_lat_and_lng", using: :btree
-  add_index "games", ["player_id"], name: "index_games_on_player_id", using: :btree
   add_index "games", ["sport_id"], name: "index_games_on_sport_id", using: :btree
   add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "player_id",  null: false
+    t.integer  "game_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "matches", ["game_id", "player_id"], name: "index_on_game_id_and_player_id", unique: true, using: :btree
 
   create_table "player_sports", force: :cascade do |t|
     t.integer  "player_id",  null: false

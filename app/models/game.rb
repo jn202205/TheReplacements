@@ -16,6 +16,8 @@
 
 class Game < ActiveRecord::Base
   validates_presence_of :game_datetime, :lat, :lng, :sport_id, :user_id
-  belongs_to :user
   belongs_to :sport
+  belongs_to :user
+  has_many :matches
+  has_many :players, through: :matches, source: :player
 end
