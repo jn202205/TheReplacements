@@ -24,10 +24,12 @@ class User < ActiveRecord::Base
 
   has_many :player_sports, foreign_key: :player_id, dependent: :destroy
   has_many :sports, through: :player_sports, source: :sport
+
   has_many :games, dependent: :destroy
   has_many :players, through: :games, source: :players
+
   has_many :matches, foreign_key: :player_id
-  has_many :games, through: :matches, source: :game
+  has_many :joined_games, through: :matches, source: :game
 
   def self.search(sport_id)
     subquery = User.joins("JOIN player_sports ON player_sports.player_id = users.id")
