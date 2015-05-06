@@ -2,7 +2,9 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   template: JST['dashboard/dashboard'],
   className: 'static-homepage',
 
-  initialize: function() {},
+  initialize: function() {
+    this.listenTo(this.model, 'sync', this.render);
+  },
 
   events: {
     'click .add-sport': 'addEditSports',
@@ -43,6 +45,14 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
 
     var view = new App.Views.UserSports({
       collection: this.userSports
+    });
+
+    this.addSubview('.your-sports', view);
+  },
+
+  renderUserSports: function() {
+    var view = new App.Views.UserSports({
+      collection: App.currUser.sports()
     });
 
     this.addSubview('.your-sports', view);

@@ -22,6 +22,7 @@ App.Routers.Router = Backbone.Router.extend({
   },
 
   renderDashboard: function() {
+    App.currUser.fetch();
     var view = new App.Views.Dashboard({
       model: App.currUser
     });
