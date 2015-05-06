@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#landing'
+  root to: 'static_pages#dashboard'
 
   get 'landing', to: 'static_pages#landing'
-  get 'dashboard', to: 'static_pages#dashboard'
 
   resources :users, only: [:new, :create, :edit]
   resource :session, only: [:new, :create, :destroy]

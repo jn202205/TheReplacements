@@ -1,6 +1,4 @@
 class StaticPagesController < ApplicationController
-  before_action :require_signed_in!, only: [:dashboard]
-
   def landing
     if signed_in?
       redirect_to :dashboard
@@ -8,6 +6,8 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
+    unless signed_in?
+      redirect_to :landing
+    end
   end
-
 end
