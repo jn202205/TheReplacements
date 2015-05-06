@@ -6,7 +6,7 @@
 <div class="clearfix">
   <div class="profile-head row">
     <div class="col-sm-12">
-      <img class="profile-avatar" src="<%= player.escape('img_url') %>" alt="">
+      <img class="profile-avatar" src="<%= player.escape('img_url') || "/assets/default-user-image.gif"%>"  alt="">
     </div>
     <% if (player.get('elite')) { %>
       <div class="col-sm-12">
