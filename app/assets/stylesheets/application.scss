@@ -359,6 +359,15 @@ ul {
     top: -15px;
     position: relative;
   }
+  a {
+    color: #8d2222;
+  }
+  a:active {
+    color: #8d2222;
+  }
+  a:focus {
+    text-decoration: none;
+  }
 }
 
 /* Sports signup form */
