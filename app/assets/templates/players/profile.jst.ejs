@@ -4,7 +4,27 @@
   <div class="row">
     <div class="sections col-xs-offset-2 col-xs-8">
       <div class="your-sports">
-        <h3>Sports <%= player.escape('fname') %> is playing</h3>
+        <% if(player.sports().length === 0) { %>
+          <% console.log(player.sports().length) %>
+          <h3><%= player.escape('fname') %> hasn't listed any sports yet</h3>
+        <% } else { %>
+          <% console.log(player.sports().length) %>
+          <h3>Sports <%= player.escape('fname') %> is playing</h3>
+        <% } %>
       </div>
-  </div>
+      <div class="experience">
+        <h3><%= player.escape('fname') %>'s experience</h3>
+        <% if(player.get('experience')  && player.get('experience').trim() != ""){ %>
+          <div>
+            <%= player.escape('experience') %>
+          </div>
+        <% } else { %>
+          <div>
+            <p>
+            <p>No experience provided</p>
+            </p>
+          </div>
+        <% } %>
+      </div>
+    </div>
 </section>
