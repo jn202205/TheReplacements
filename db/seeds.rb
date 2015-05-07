@@ -191,8 +191,7 @@ puts '*' * 80
 
 #Generate player_sports
 User.all.each do |user|
-  sport_num = user.id.even? ? 3 : 4
-  sport_num.times do
+  [2,3].sample.times do
     player_sport = PlayerSport.new(
       player_id: user.id,
       sport_id: Sport.find_by_name(Faker::Name.sport).id

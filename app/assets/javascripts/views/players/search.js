@@ -47,9 +47,6 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
         App.games.getOrFetch(model.id);
         App.currUser.fetch();
         Backbone.history.navigate('' ,{ trigger: true });
-        // Backbone.history.navigate('game/' + model.id, {
-        //   trigger: true
-        // });
       }
     });
   },
