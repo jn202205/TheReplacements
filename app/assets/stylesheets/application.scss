@@ -64,6 +64,7 @@ ul {
 
 .static-homepage {
   @extend .clearfix;
+  padding-bottom: 4em;
   .jumbotron {
     background-color: transparent;
     padding-left: 5%;
@@ -146,6 +147,9 @@ ul {
         }
       }
     }
+  }
+  #sports {
+    padding: 7em 0 5em;
   }
   /* user dashboard */
   .dashboard-head {
