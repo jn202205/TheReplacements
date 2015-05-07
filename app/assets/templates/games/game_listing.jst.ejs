@@ -1,0 +1,9 @@
+<div class='col-sm-9 col-xs-12'>
+  <div>
+    <p><%= sport.get('name') %> on <%= moment(game.get('game_datetime')).format("dddd, MMMM Do YYYY, h:mm a") %></p>
+    <p>Location: <%= game.get('address') %></p>
+  </div>
+</div>
+<div class="col-sm-3 col-xs-12">
+  <a href="#" class="btn btn-default">Find players</a>
+</div>

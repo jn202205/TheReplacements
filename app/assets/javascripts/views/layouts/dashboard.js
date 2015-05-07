@@ -29,33 +29,11 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.renderHeader();
+    this.renderUserGames();
     this.renderUserSports();
     this.renderAreaPlayers();
     // this.renderSidebar();
     return this;
-  },
-
-  renderUserSports: function() {
-    this.userSports = new App.Collections.Sports();
-    this.userSports.fetch({
-      data: {
-        current_user: true
-      }
-    });
-
-    var view = new App.Views.UserSports({
-      collection: this.userSports
-    });
-
-    this.addSubview('.your-sports', view);
-  },
-
-  renderUserSports: function() {
-    var view = new App.Views.UserSports({
-      collection: App.currUser.sports()
-    });
-
-    this.addSubview('.your-sports', view);
   },
 
   renderAreaPlayers: function() {
@@ -80,6 +58,22 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
     this.addSubview('.dashboard-head', view);
   },
 
+  renderUserGames: function() {
+    var view = new App.Views.UserGames({
+      collection: App.currUser.games()
+    });
+
+    this.addSubview('.your-games', view);
+  },
+
+  renderUserSports: function() {
+    var view = new App.Views.UserSports({
+      collection: App.currUser.sports()
+    });
+
+    this.addSubview('.your-sports', view);
+  },
+
   renderSidebar: function() {
     this.sports = new App.Collections.Sports();
     this.sports.fetch({
@@ -93,5 +87,4 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
 
     this.addSubview('.sidebar', view);
   }
-
 });

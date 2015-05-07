@@ -193,10 +193,33 @@ ul {
           margin-bottom: 10px;
           a.btn.btn-default {
             position: relative;
-            top: 16px;
+            top: 18px;
           }
           a.btn.btn-default:active {
+            top: 20px;
+          }
+        }
+      }
+      .game-listings {
+        padding: 0;
+        .game-listing {
+          background-color: #edeff1;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          margin-bottom: 10px;
+          .col-sm-9 {
+            padding: 15px 0;
+            p {
+              margin: 0;
+              font-weight: 600;
+            }
+          }
+          a.btn.btn-default {
+            position: relative;
             top: 18px;
+          }
+          a.btn.btn-default:active {
+            top: 20px;
           }
         }
       }
@@ -394,6 +417,13 @@ ul {
     background-color: #8d2222;
     color: white;
   }
+}
+
+.game-info {
+  border: 1px solid;
+  height: 100px;
+  top: -2em;
+  border-radius: 4px;
 }
 
 .results {

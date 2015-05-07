@@ -1,10 +1,10 @@
 module Api
   class GamesController < ApplicationController
     before_action :require_signed_in!
-    wrap_parameters :game, {include: [:sport_id, :game_datetime, :lat, :lng, :details]}
+    wrap_parameters :game, {include: [:sport_id, :game_datetime, :lat, :lng, :details, :address]}
 
     def index
-      @games = Game.all
+      @games = current_user.games
     end
 
     def show
@@ -13,7 +13,6 @@ module Api
 
     def create
       @game = current_user.games.new(game_params)
-
       if @game.save
         render json: @game
       else
@@ -23,7 +22,7 @@ module Api
 
     private
     def game_params
-      params.require(:game).permit(:sport_id, :game_datetime, :lat, :lng, :details)
+      params.require(:game).permit(:sport_id, :game_datetime, :lat, :lng, :details, :address)
     end
   end
 end
