@@ -8,11 +8,14 @@ App.Routers.Router = Backbone.Router.extend({
     "sports_form": 'renderSportForm',
     "player_search": 'renderPlayerSearch',
     "player_results/:id/:lat/:lng": 'renderPlayerResults',
+    "game/:id": 'renderGameSearch',
     "player/:id": 'renderPlayerProfile'
   },
 
   renderPlayerProfile: function(id) {
-    var user = new App.Models.Player({id: id});
+    var user = new App.Models.Player({
+      id: id
+    });
     user.fetch();
     var view = new App.Views.PlayerProfile({
       model: user
@@ -29,25 +32,53 @@ App.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  renderPlayerResults: function(id, lat, lng) {
-    var sport = new App.Models.Sport({id: id});
+  renderGameSearch: function(id) {
+    var game = App.currUser.games().getOrFetch(id);
+    var sport = new App.Models.Sport({
+      id: game.get('sport_id')
+    });
     sport.fetch();
+
     var playerResults = new App.Collections.Players();
     playerResults.fetch({
       data: {
-        sport_id: id
+        sport_id: game.get('sport_id')
       }
     });
+
     var view = new App.Views.PlayerResultsView({
-      model: App.currUser,
+      model: game,
+      user: App.currUser,
       collection: playerResults,
-      lat: lat,
-      lng: lng,
       sport: sport
     });
 
     this._swapView(view);
   },
+
+  // renderPlayerResults: function(id, lat, lng) {
+  //   App.currUser.games().fetch();
+  //   var sport = new App.Models.Sport({
+  //     id: id
+  //   });
+  //   sport.fetch();
+
+  //   var playerResults = new App.Collections.Players();
+  //   playerResults.fetch({
+  //     data: {
+  //       sport_id: id
+  //     }
+  //   });
+
+  //   var view = new App.Views.PlayerResultsView({
+  //     model: game,
+  //     user: App.currUser,
+  //     collection: playerResults,
+  //     sport: sport,
+  //   });
+
+  //   this._swapView(view);
+  // },
 
   renderPlayerSearch: function() {
     var sports = new App.Collections.Sports();

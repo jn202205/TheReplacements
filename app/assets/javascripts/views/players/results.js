@@ -3,8 +3,9 @@ App.Views.PlayerResultsView = Backbone.CompositeView.extend({
   className: 'static-homepage',
 
   initialize: function(opts) {
-    this.eventLoc = new google.maps.LatLng(opts.lat, opts.lng);
     this.sport = opts.sport;
+    this.user = opts.user;
+    this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.sport, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.model, 'sync', this.render);
@@ -21,20 +22,24 @@ App.Views.PlayerResultsView = Backbone.CompositeView.extend({
   },
 
   renderHeader: function() {
-    var view = new App.Views.Header({
-      model: this.model
+    var view;
+    view = new App.Views.Header({
+      model: App.currUser
     });
 
     this.addSubview('.dashboard-head', view);
   },
 
   renderPlayers: function() {
+    var lat = this.model.get('lat'),
+      lng = this.model.get('lng'),
+      eventLoc = new google.maps.LatLng(lat, lng);
     _.each(this.collection.shuffle(), function(player) {
       if (player.get('playing_area')) {
         var playingArea = new google.maps.Polygon({
           paths: google.maps.geometry.encoding.decodePath(player.get('playing_area'))
         });
-        if (google.maps.geometry.poly.containsLocation(this.eventLoc, playingArea)) {
+        if (google.maps.geometry.poly.containsLocation(eventLoc, playingArea)) {
           this.addPlayerCard(player);
         }
       }

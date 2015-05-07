@@ -15,7 +15,7 @@ App.Views.GameListing = Backbone.CompositeView.extend({
 
   playerSearch: function(event) {
     event.preventDefault();
-    Backbone.history.navigate('/game/' + this.model.id, {
+    Backbone.history.navigate('game/' + this.model.id, {
       trigger: true
     });
   },

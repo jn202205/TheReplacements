@@ -26,6 +26,7 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
       this.position = place.geometry.location;
       this.$('#lat').val(this.position.lat());
       this.$('#lng').val(this.position.lng());
+      this.$('#address').val(place.name);
     }.bind(this));
 
     google.maps.event.addDomListener(document.getElementById("searchTextField"), 'blur', function() {
@@ -38,14 +39,18 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
 
   search: function(event) {
     event.preventDefault();
-    var data = $(event.target).serializeJSON();
     var game = new App.Models.Game();
+    var data = $(event.target).serializeJSON();
     game.save(data, {
-      wait: true
-    });
-    var search_params = '' + data.sport_id + '/' + data.lat + '/' + data.lng;
-    Backbone.history.navigate('player_results/' + search_params, {
-      trigger: true
+      wait: true,
+      success: function(model, response, options) {
+        App.games.getOrFetch(model.id);
+        App.currUser.fetch();
+        Backbone.history.navigate('' ,{ trigger: true });
+        // Backbone.history.navigate('game/' + model.id, {
+        //   trigger: true
+        // });
+      }
     });
   },
 
