@@ -14,7 +14,7 @@ App.Views.SportListing = Backbone.CompositeView.extend({
 
   playerSearch: function(event) {
     event.preventDefault();
-    Backbone.history.navigate('/player_search', {
+    Backbone.history.navigate('/player_search/' + this.model.id, {
       trigger: true
     });
   },

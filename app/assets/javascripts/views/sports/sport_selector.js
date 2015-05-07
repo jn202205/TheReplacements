@@ -6,14 +6,15 @@ App.Views.SportSelector = Backbone.CompositeView.extend({
   },
 
   selectSport: function(event) {
-    if(this.selectedSport) {
+    if (this.selectedSport) {
       this.selectedSport.parent('.sport-btn').removeClass('selected');
     }
     this.selectedSport = $(event.currentTarget);
     this.selectedSport.parent('.sport-btn').addClass('selected');
   },
 
-  initialize: function() {
+  initialize: function(opts) {
+    this.selected_id = opts.selected_id;
     this.listenTo(this.collection, 'sync', this.render);
   },
 
@@ -24,6 +25,9 @@ App.Views.SportSelector = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.addSports();
 
+    if (this.selected_id) {
+      $('label.sport').children(':radio[value=' + this.selected_id + ']').click();
+    }
     return this;
   },
 

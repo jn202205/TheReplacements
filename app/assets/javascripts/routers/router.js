@@ -7,6 +7,7 @@ App.Routers.Router = Backbone.Router.extend({
     "": 'renderDashboard',
     "sports_form": 'renderSportForm',
     "player_search": 'renderPlayerSearch',
+    "player_search/:id": 'renderPlayerSearch',
     "player_results/:id/:lat/:lng": 'renderPlayerResults',
     "game/:id": 'renderGameSearch',
     "player/:id": 'renderPlayerProfile'
@@ -56,12 +57,13 @@ App.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  renderPlayerSearch: function() {
+  renderPlayerSearch: function(id) {
     var sports = new App.Collections.Sports();
     sports.fetch();
     var view = new App.Views.PlayerSearch({
       model: App.currUser,
-      collection: sports
+      collection: sports,
+      sport_id: id
     });
 
     this._swapView(view);

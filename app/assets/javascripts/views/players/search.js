@@ -6,7 +6,8 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
     "submit": "search"
   },
 
-  initialize: function() {
+  initialize: function(opts) {
+    this.preselectedSport = opts.sport_id;
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.render);
   },
@@ -86,7 +87,8 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
 
   renderSportSelector: function() {
     var view = new App.Views.SportSelector({
-      collection: this.collection
+      collection: this.collection,
+      selected_id: this.preselectedSport
     });
 
     this.addSubview('.sport-select', view);
