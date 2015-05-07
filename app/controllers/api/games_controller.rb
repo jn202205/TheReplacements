@@ -4,7 +4,7 @@ module Api
     wrap_parameters :game, {include: [:sport_id, :game_datetime, :lat, :lng, :details, :address]}
 
     def index
-      @games = current_user.games
+      @games = current_user.games.where("game_datetime >= ?", 1.hour.ago).order(game_datetime: :asc)
     end
 
     def show

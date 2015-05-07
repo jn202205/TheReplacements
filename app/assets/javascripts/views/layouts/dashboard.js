@@ -59,8 +59,10 @@ App.Views.Dashboard = Backbone.CompositeView.extend({
   },
 
   renderUserGames: function() {
+    var games = new App.Collections.Games();
+    games.fetch();
     var view = new App.Views.UserGames({
-      collection: App.currUser.games()
+      collection: games
     });
 
     this.addSubview('.your-games', view);
