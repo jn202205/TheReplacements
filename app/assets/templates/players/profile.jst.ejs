@@ -16,13 +16,13 @@
         <h3><%= player.escape('fname') %>'s experience</h3>
         <% if(player.get('experience')  && player.get('experience').trim() != ""){ %>
           <div>
+            <p>
             <%= player.escape('experience') %>
+            </p>
           </div>
         <% } else { %>
           <div>
-            <p>
             <p>No experience provided</p>
-            </p>
           </div>
         <% } %>
       </div>
