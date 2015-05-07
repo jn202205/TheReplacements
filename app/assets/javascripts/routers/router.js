@@ -56,30 +56,6 @@ App.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  // renderPlayerResults: function(id, lat, lng) {
-  //   App.currUser.games().fetch();
-  //   var sport = new App.Models.Sport({
-  //     id: id
-  //   });
-  //   sport.fetch();
-
-  //   var playerResults = new App.Collections.Players();
-  //   playerResults.fetch({
-  //     data: {
-  //       sport_id: id
-  //     }
-  //   });
-
-  //   var view = new App.Views.PlayerResultsView({
-  //     model: game,
-  //     user: App.currUser,
-  //     collection: playerResults,
-  //     sport: sport,
-  //   });
-
-  //   this._swapView(view);
-  // },
-
   renderPlayerSearch: function() {
     var sports = new App.Collections.Sports();
     sports.fetch();
