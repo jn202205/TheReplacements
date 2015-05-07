@@ -13,7 +13,8 @@ App.Views.PlayerResultsView = Backbone.CompositeView.extend({
 
   render: function() {
     var content = this.template({
-      sport: this.sport
+      sport: this.sport,
+      game: this.model
     });
     this.$el.html(content);
     this.renderHeader();

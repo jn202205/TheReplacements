@@ -8,7 +8,7 @@
     <h3 col-xs-12>Search results</h3>
     <% if (sport.get('name')) { %>
       <% sportName = sport.get('name').toLowerCase() %>
-      <div>Here are some players playing <%= sportName %> in that area</div>
+      <div>Here are some people playing <%= sportName %> near <%= game.get('address') %></div>
     <% } %>
     <div class="results"></div>
   </div>
