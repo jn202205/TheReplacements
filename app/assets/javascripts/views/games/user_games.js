@@ -8,7 +8,9 @@ App.Views.UserGames = Backbone.CompositeView.extend({
   },
 
   render: function() {
-    var content = this.template();
+    var content = this.template({
+      games: this.collection
+    });
     this.$el.html(content);
     this.addGames();
     this.attachSubviews();

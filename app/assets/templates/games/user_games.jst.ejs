@@ -1,1 +1,11 @@
-<ul class="game-listings clearfix"></ul>
+<ul class="game-listings clearfix">
+  <% if (games.length === 0) { %>
+    <div>
+      <h4>You don't have any games scheduled</h4>
+    </div>
+  <% } else { %>
+    <li>
+      <p>These are the games you currently have scheduled</p>
+    </li>
+  <% } %>
+</ul>
