@@ -44,9 +44,9 @@ App.Views.PlayerSearch = Backbone.CompositeView.extend({
     game.save(data, {
       wait: true,
       success: function(model, response, options) {
-        App.games.getOrFetch(model.id);
         App.currUser.fetch();
-        Backbone.history.navigate('' ,{ trigger: true });
+        App.currUser.games().getOrFetch(model.id);
+        Backbone.history.navigate('', { trigger: true });
       }
     });
   },
